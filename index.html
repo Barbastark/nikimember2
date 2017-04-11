@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Nikimember</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+	
+	<!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+	  <link href='https://fonts.googleapis.com/css?family=Alegreya+Sans:400,500,700' rel='stylesheet' type='text/css'> 
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/hamburger-icon.css">
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+  </head>
+  <body>
+    <!-- SITE NAVIGATION -->
+    <nav id="site-nav" class="navbar navbar-fixed-top">
+	    <button id="nav-icon" class="navbar-toggler float-xs-left hidden-md-up" data-toggle="collapse" data-target="#navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <a id="logo" class="navbar-brand" href="#"><img src="img/nikilogo.png" class="img-fluid" alt="logo"/></a>
+
+      <div class="collapse navbar-toggleable-sm" id="navigation" role="navigation">
+        <ul class="nav navbar-nav float-md-right">
+         <li class="nav-item active">
+           <a id="home-link" class="nav-link nav-link-mobile" href="#">START</a>
+         </li>
+         <li class="nav-item">
+           <a class="nav-link nav-link-mobile" href="#">FÖR FÖRENINGAR</a>
+         </li>
+         <li class="nav-item">
+           <a class="nav-link nav-link-mobile" href="#">FÖR FÖRETAG</a>
+         </li>
+         <li class="nav-item">
+           <a class="nav-link nav-link-mobile" href="#">EXEMPEL</a>
+         </li>
+         <li class="nav-item">
+           <a class="nav-link nav-link-mobile" href="#">FAQ</a>
+         </li>
+         <li class="nav-item">
+           <a class="nav-link nav-link-mobile" href="#">LOGGA IN</a>
+         </li>
+        </ul>
+       </div>
+      	          
+       <div id="category-dropdown-mobile-container" class="dropdown hidden-md-up float-xs-right">
+          <button id="btn-mobile-dropdown-toggle" class="btn btn-secondary float-xs-right " type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-filter" aria-hidden="true"></i>
+          </button>
+           <div id="category-dropdown-mobile" class="dropdown-menu">
+            <a data-id="1" class="dropdown-item category-mobile-link" href="#">Bil, Båt & Motor</a>
+            <a data-id="2" class="dropdown-item category-mobile-link" href="#">Bygg & Byggmaterial</a>
+            <a data-id="3" class="dropdown-item category-mobile-link" href="#">Bank & Försäkring</a>
+            <a data-id="4" class="dropdown-item category-mobile-link" href="#">Hem & Inredning</a>
+            <a data-id="5" class="dropdown-item category-mobile-link" href="#">Media & Elektronik</a>
+            <a data-id="6" class="dropdown-item category-mobile-link" href="#">Hälsa & Sjukvård</a>
+            <a data-id="7" class="dropdown-item category-mobile-link" href="#">Kultur, Nöjen & Evenemang</a>
+            <a data-id="8" class="dropdown-item category-mobile-link" href="#">Mode & Skönhet</a>
+            <a data-id="9" class="dropdown-item category-mobile-link" href="#">Resor & Hotel</a>
+            <a data-id="10" class="dropdown-item category-mobile-link" href="#">Restaurang, Mat & Dryck</a>
+            <a data-id="11" class="dropdown-item category-mobile-link" href="#">Sport, Hobby & Lek</a>
+          </div>
+        </div>
+     </nav>
+     <!-- END SITE NAVIGATION --> 
+    
+    <!-- HEADER -->
+      <section id="header">
+        <div class="container header-slide-container">
+          <div class="row">
+            <div class="carousel slide wow fadeIn" data-wow-delay="1s" data-wow-duration="2s" data-ride="carousel">
+              <div class="carousel-inner" role="listbox">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    <!-- END HEADER -->
+
+    <!-- CATEGORIES FILTER NAVIGATION -->
+    <nav id="categories-filter-navigation" class="navbar hidden-sm-down">
+      <ul class="nav navbar-nav">
+         <li class="nav-item">
+           <a data-id="1" class="category-link nav-link" href="#latest-deals">Bil, Båt & Motor</a>
+         </li>
+         <li class="nav-item">
+           <a data-id="2" class="category-link nav-link" href="#latest-deals">Bygg & Byggmaterial</a>
+         </li>
+         <li class="nav-item">
+           <a data-id="3" class="category-link nav-link" href="#latest-deals">Bank & Försäkring</a>
+         </li>
+         <li class="nav-item">
+           <a data-id="4" class="category-link nav-link" href="#latest-deals">Hem & Inredning</a>
+         </li>
+         <li class="nav-item">
+           <a data-id="5" class="category-link nav-link" href="#latest-deals">Media & Elektronik</a>
+         </li>
+         <li class="nav-item">
+           <a data-id="6" class="category-link nav-link" href="#latest-deals">Hälsa & Sjukvård</a>
+         </li>
+         <li class="nav-item">
+           <a data-id="7" class="category-link nav-link" href="#latest-deals">Kultur, Nöjen & Evenemang</a>
+         </li>
+        </ul>
+        <div>
+          <button id="btn-category-toggler" class="btn btn-secondary float-xs-right" type="button">
+            <i class="fa fa-filter" aria-hidden="true"></i>
+          </button>
+        </div>
+     </nav>
+     <section id="filter" class="filter row hidden-xs-down">
+      <div class="col-sm-6">
+        <div class="row">
+            <div class="category-header col-md-6 col-lg-3 offset-lg-3">
+            <h1>Kategorier</h1>
+            </div>
+            <div class="category-header col-md-6 col-lg-4 offset-lg-2">
+            <h1>Populära Sökord</h1>
+            </div>
+            <div class="col-md-6 col-lg-4 offset-lg-3 list-group">
+              <a data-id="1" class="dropdown-item category-search" href="#latest-deals">Bil, Båt & Motor</a>
+              <a data-id="2" class="dropdown-item category-search" href="#latest-deals">Bygg & Byggmaterial</a>
+              <a data-id="3" class="dropdown-item category-search" href="#latest-deals">Bank & Försäkring</a>
+              <a data-id="4" class="dropdown-item category-search" href="#latest-deals">Hem & Inredning</a>
+              <a data-id="5" class="dropdown-item category-search" href="#latest-deals">Media & Elektronik</a>
+              <a data-id="6" class="dropdown-item category-search" href="#latest-deals">Hälsa & Sjukvård</a>
+              <a data-id="7" class="dropdown-item category-search" href="#latest-deals">Kultur, Nöjen & Evenemang</a>
+              <a data-id="8" class="dropdown-item category-search" href="#latest-deals">Mode & Skönhet</a>
+              <a data-id="9" class="dropdown-item category-search" href="#latest-deals">Resor & Hotel</a>
+              <a data-id="10" class="dropdown-item category-search" href="#latest-deals">Restaurang, Mat & Dryck</a>
+              <a data-id="11" class="dropdown-item category-search" href="#latest-deals">Sport, Hobby & Lek</a>
+            </div>
+            <div class="col-md-6 col-lg-3 offset-lg-1 list-group">
+              <a class="dropdown-item popular-search" href="#latest-deals-container">Mat</a>
+              <a class="dropdown-item popular-search" href="#latest-deals-container">Sport</a>
+              <a class="dropdown-item popular-search" href="#latest-deals-container">Kläder</a>
+              <a class="dropdown-item popular-search" href="#latest-deals-container">Musik</a>
+              <a class="dropdown-item popular-search" href="#latest-deals-container">Skönhetsprodukter</a>
+              <a class="dropdown-item popular-search" href="#latest-deals-container">Fallskärmshoppning</a>
+              <a class="dropdown-item popular-search" href="#latest-deals-container">Skor</a>
+              <a class="dropdown-item popular-search" href="#latest-deals-container">Resor</a>
+              <a class="dropdown-item popular-search" href="#latest-deals-container">Restaurang</a>
+              <a class="dropdown-item popular-search" href="#latest-deals-container">Elektronik</a>
+              <a class="dropdown-item popular-search" href="#latest-deals-container">Musik</a>
+            </div>
+          </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="row">
+          <div class="category-header col-sm-12">
+            <h1>Sök</h1>
+        </div>
+        <div class="form-group">
+          <input type="text" placeholder="Sök Erbjudande" class="form-control" id="search">
+        </div>
+      </div>
+      </div>
+    </section>
+    <!-- END CATEGORIES FILTER NAVIGATION -->
+    
+    <!-- DEALS -->
+    <section id="latest-deals" class="deals container"></section>
+    <section id="popular-deals" class="deals container"></section>
+    <!-- END DEALS -->
+
+    <!-- FOOTER -->
+    <section id="footer">
+      <div class="container wow fadeInUp" data-wow-delay="0.4s" data-wow-duration="1.5s">
+        <div class="row">
+          <div class="col-md-8 col-sm-6">
+            <h3>Om Nikimember</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque semper ante sem. Donec id sollicitudin lorem. Etiam id quam a velit scelerisque tempus. Phasellus sit amet velit sagittis, accumsan nunc id, hendrerit mi. Donec auctor leo non lectus auctor congue. Aliquam maximus placerat turpis ut auctor.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a></li>
+            </ul>
+          </div>
+          <div class="col-md-4 col-sm-6">
+            <h3>Kontakta Oss:</h3>
+            <ul class="list-unstyled">
+              <li><p><strong><i class="fa fa-map-marker"></i> Adress:</strong> Sveavägen 166, 4tr</p></li>
+              <li><p><strong><i class="fa fa-envelope"></i> Epost: </strong> email@nikimember.se<a href="#"></a></p></li>
+              <li><p><strong><i class="fa fa-phone"></i> Tel: </strong>08-566 280 50</p></li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <p>&copy; 2017 Nikified Media AB</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- END FOOTER -->
+
+    <!-- External Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js" integrity="sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/js/bootstrap.min.js" integrity="sha384-ux8v3A6CPtOTqOzMKiuo3d/DomGaaClxFYdCu2HPMBEkf6x2xiDyJ7gkXU0MWwaD" crossorigin="anonymous"></script>
+    <script src="js/wow.min.js"></script>
+    <script> new WOW().init(); </script>
+
+    <!-- Custom Scripts -->
+    <script src="js/offer.js"></script>
+    <script src="js/templates.js"></script>
+    <script src="js/deals.js"></script>
+    <script src="js/animations.js"></script>
+    <script>
+      
+    </script>
+	</body>
+</html>
+
