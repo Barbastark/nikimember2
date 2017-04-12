@@ -123,8 +123,10 @@ body::-webkit-scrollbar {
 .category-header {
     padding: 0;
 }
-.filter-open .form-group input:focus {
-    outline-color: #fff;
+.filter input[type="text"] {
+    outline: none;
+    box-shadow:none !important;
+    border:1px solid #ccc !important;
 }
 /* END CATEGORIES */
 
@@ -217,7 +219,30 @@ body::-webkit-scrollbar {
     color:white;
 }
 #footer a {
-    color:white;
+    color:#fff;
+}
+#footer a.btn {
+    border: 1px solid #fff;
+    background-color: transparent;
+    transition: all .3s ease-in-out;
+    margin-bottom: 15px;
+}
+#footer a.btn:hover {
+    background-color: #fff;
+    color: #c85a5b;
+    transition: all .3s ease-in-out;
+}
+#footer img {
+    width: 135px;
+    height: 40px;
+    margin-bottom: 15px;
+}
+#app-links a:first-child {
+    margin-right: 10px;
+}
+#app-links a:last-child img {
+    border: 1px solid #bbb;
+    border-radius: 3px;
 }
 #footer .fa {
     padding:0 5px;

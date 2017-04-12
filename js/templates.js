@@ -5,6 +5,33 @@
         return num.toFixed(2)
       }
     }
+   function formatPriceAndCashback(value, cashback) {
+    var main = document.getElementById('main')
+    var deal = document.getElementById('deal')
+    
+    if(value.price === 0) {
+      if(main !== null) {
+        return '<p class="price-tag">Gratis</p><p class="cashback"><span>Din Cashback: </span>' + cashback + '</p>' 
+        }
+      if(deal !== null) {
+        return '<h2>Pris</h2><p class="price-tag">Gratis</p><h2>Din Cashback</h2><p class="cashback">'+ cashback + '</p>'
+      }
+      } else if(value.price < 0) {
+        if(main !== null) {
+          return '<p class="price-tag" style="visibility:hidden">Gratis</p><p class="cashback" style="color: red"><span>Rabatt: ' + cashback + 'kr</p>'
+        }
+        if(deal !== null) {
+          return '<h2 style="color: red">Rabatt</h2><p style="color: red" class="cashback">'+ cashback + 'kr</p>'
+      }
+      } else {
+        if(main !== null) {
+          return '<p class="price-tag">' + value.price + 'kr</p><p class="cashback"><span>Din Cashback:</span> ' + cashback + '</p>'
+        }
+        if(deal !== null) {
+          return '<h2>Pris</h2><p class="price-tag">'+value.price+'kr</p><h2>Din Cashback</h2><p class="cashback">'+ cashback + '</p>'
+      }
+     }
+   } 
    function getType(value) {
       
     var type;
@@ -54,7 +81,7 @@
       cashback = formatPrice(value.user_cashback_decimal) + 'kr';
     }
     if(value.price < 0) {
-      cashback = formatPrice(value.price);
+      cashback = formatPrice((value.price)*(-1));
     }
     return cashback;
   }
@@ -93,8 +120,7 @@ function deals(value) {
               '<section class="deal-info">' +
                 '<h2>' + value.title +'</h2>' +
                 (value.original_price > value.price ? '<p class="original-price" style="text-decoration:line-through;">' + value.original_price + 'kr</p>' : '<p class="original-price" style="visibility: hidden"><strike>' + value.original_price + 'kr</strike></p>' )+
-                (value.price === 0 ? '<p class="price-tag">Gratis</p>' : '<p class="price-tag">' + value.price + 'kr</p>')  +
-                '<p class="cashback">' + '<span>Din Cashback:</span> ' + cashback + '</p>' +
+                (formatPriceAndCashback(value, cashback))+
                 '<p class="contribution"><span>Föreningsbidrag:</span> ' + grant + '</p>' +
               '</section>' +
             '</article>' +
@@ -117,10 +143,8 @@ function dealDetails(data) {
             '<section class="col-sm-6 wow fadeInRight" data-wow-duration="1s" data-wow-delay=".2s">'+
               '<h1>' + data.title + '</h1>'+
               (data.original_price > data.price ? '<h2>Originalpris</h2><p class="original-price" style="text-decoration:line-through;">' + data.original_price + 'kr</p>' : '<h2 style="display: none;"></h2>')+ 
-               
-                '<h2>Pris</h2>' + (data.price === 0 ? '<p class="price-tag">Gratis</p>' : '<p class="price-tag">' + data.price + 'kr</p>')  +
-                '<h2>Din Cashback</h2><p class="cashback">'+ cashback + '</p>' +
-                '<h2>Föreningsbidrag</h2><p class="contribution">' + grant + '</p>' +
+              (formatPriceAndCashback(data, cashback)) +
+               '<h2>Föreningsbidrag</h2><p class="contribution">' + grant + '</p>' +
             '</section>'+
           '</div>'+
           '<div class="row">'+
