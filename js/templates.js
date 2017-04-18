@@ -158,11 +158,12 @@ function dealDetails(data) {
   
 }
 
-function carouselItem(className, img) {
+function carouselItem(className, img, data) {
   
   return '<div class="' + className + '">'+
             '<div class="image-wrapper col-md-12 ">'+
-            '<img class="card-img-top img-fluid" alt="product image" src="' + img  + '"/>' + 
+            '<a href="deal.html#'+data.id+'">'+ 
+            '<img class="card-img-top img-fluid" alt="product image" src="' + img  + '"/></a>' + 
             '</div>'+
           '</div>'
 }

@@ -36,13 +36,14 @@ $(function() {
    offer.setFields(null)
    offer.setPage('1')
    offer.getCollection(function(data){
+
     $( data ).each(function( index, value ) {
       
       var id = value.image_ids[0];               
       var img = 'https://www.nikimember.se/images/' + id;
       i === 0 ? className = "carousel-item active" : className = "carousel-item"; 
       
-      $('.carousel-inner').append(carouselItem(className, img));
+      $('.carousel-inner').append(carouselItem(className, img, value));
       i++;
     });
   });

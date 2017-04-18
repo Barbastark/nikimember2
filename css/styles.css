@@ -1,5 +1,7 @@
-/* GLOBAL*/
+/*FONTS*/
 @import url('https://fonts.googleapis.com/css?family=Dosis|Open+Sans:300|Roboto');
+
+/* GLOBAL*/
 html, body {
     height:100%;
     font-family: 'Alegreya Sans', sans-serif;
@@ -18,8 +20,6 @@ body::-webkit-scrollbar {
     margin: 0;
     padding: 0;
 }
-
-
 /* END GLOBAL */
 
 /* SITE NAVIGATION */
@@ -42,7 +42,6 @@ body::-webkit-scrollbar {
     opacity: 0;
     transition: all 0.5s ease-in-out;
 }
-
 /* END SITE NAVIGATION */
 
 /*HEADER*/
@@ -163,7 +162,6 @@ body::-webkit-scrollbar {
     width: 100%;
     height: 100%;
     background-image: url('../img/eye (2).png');
-    gbackground-image: linear-gradient(to bottom, rgba(0,0,0,0.2)0%, rgba(0,0,0,0.2) 100%), url('../img/eye (2).png');;
     background-position: center center;
     background-repeat: no-repeat;
     opacity: 0;
@@ -212,6 +210,8 @@ body::-webkit-scrollbar {
     font-size: .9em;
     font-weight: bold;
 }
+/*END DEALS*/
+
 /* FOOTER */
 #footer {
     padding:2rem 0;
@@ -221,11 +221,12 @@ body::-webkit-scrollbar {
 #footer a {
     color:#fff;
 }
+
 #footer a.btn {
     border: 1px solid #fff;
     background-color: transparent;
     transition: all .3s ease-in-out;
-    margin-bottom: 15px;
+    margin: 0 5px 15px 0;
 }
 #footer a.btn:hover {
     background-color: #fff;
@@ -243,6 +244,7 @@ body::-webkit-scrollbar {
 #app-links a:last-child img {
     border: 1px solid #bbb;
     border-radius: 3px;
+    box-sizing: border-box;
 }
 #footer .fa {
     padding:0 5px;
@@ -322,9 +324,9 @@ body::-webkit-scrollbar {
 
 @media(min-width:1921px) {
     #categories-filter-navigation ul, #btn-category-toggler {
-    font-size: 25px;
+        font-size: 25px;
     }
 }
 
 
-/* PROVISORISK PANIKLÖSNING! */
+
