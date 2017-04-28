@@ -122,6 +122,7 @@ body {
 	margin-bottom: 20px;
 	text-align: center;
 }
+
 #contact #form-container {
 	padding:0;
 }
@@ -174,6 +175,10 @@ body {
 }
 #contact .form-control:focus:-moz-placeholder { /* Firefox 18- */
   color: #666;
+}
+#contact #contact-form button {
+	background-color: darkred;
+	border-color: darkred;
 }
 @media(max-width:767px) {
 	#organization figure {
