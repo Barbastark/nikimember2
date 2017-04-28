@@ -1,26 +1,8 @@
-//Hamburger icon
-  let hamburgerIcon = document.querySelector('#nav-icon');
+  //Hide/show site navigation on scroll
+  let lastScrollTop = 0;
   let siteNav = document.querySelector('#site-nav');
 
-//Categories section
-  let categories = document.querySelector('#filter');
-  let toggleCategoriesBtn = document.querySelector('#btn-category-toggler');
-
-//Hide/show sitenav on scroll
-  let lastScrollTop = 0;
-
-  hamburgerIcon.addEventListener('click', () => {
-    
-    !hamburgerIcon.classList.contains('open') ? hamburgerIcon.classList.add('open') : hamburgerIcon.classList.remove('open')
-  })
-
-  toggleCategoriesBtn.addEventListener('click', () => {
-
-    !categories.classList.contains('filter-open') ? categories.classList.add('filter-open') : categories.classList.remove('filter-open')
-    
-  })
-  
-  window.addEventListener("scroll", () =>{ 
+   window.addEventListener("scroll", () => { 
 
      let st = window.pageYOffset || document.documentElement.scrollTop; 
 
@@ -29,12 +11,49 @@
      lastScrollTop = st;
   }, false);
 
-  $(".nav-item, .dropdown-item").click(function() {
+  //Add remove class on mobile nav button
+  $('#nav-icon').on('click', function(){
+    if($( "#nav-icon" ).hasClass( "open" )) {
+      $("#nav-icon").removeClass("open");
+    } else {
+      $("#nav-icon").addClass("open");
+    }
+  });
+
+  //Toggles filter section
+  $('#btn-category-toggler').on('click', function() {
+    if($('#filter').hasClass('filter-open')) {
+      $('#filter').removeClass('filter-open')
+    } else {
+      $('#filter').addClass('filter-open')
+    }
+  });
+  
+  //Closes mobile sitenav when navlink is clicked
+  $(".nav-link-mobile").click(function() {
+    $("#nav-icon").removeClass('open');
+    $(".navbar-toggleable-sm").collapse('hide');
+  });
+
+  //Smooth scroll
+  $(".nav-item:first-child, .dropdown-item").click(function() {
     $('html, body').animate({
         scrollTop: $("#latest-deals").offset().top
     }, 500);
-    //$('#filter').removeClass('filter-open')
   });
+  //Rotate arrow toggle icon categories menu
+  $("#btn-category-toggler").click(function() {
+    if($('.toggle-icon').hasClass('toggle-icon-rotate')) {
+      $('.toggle-icon').removeClass('toggle-icon-rotate')
+    }
+    else {
+      $('.toggle-icon').addClass('toggle-icon-rotate')
+    }
+  });
+
+  
+ 
+  
       
       
       

@@ -1,6 +1,5 @@
 #site-wrapper {
 	background-color:#f6f6f6;
-	
 	padding: 0;
 	min-height: 100vh;
 }
@@ -23,21 +22,40 @@
 	font-family: 'Dosis', sans-serif;
 }
 #deal-overview .original-price {
-	color: green;
+	color: darkgreen;
 }
 #deal-overview .price-tag {
-	color: red;
+	color: darkred;
+}
+#deal-overview button, .btn-to-deal {
+	border: 1px solid green;
+	color: #fff;
+    background-color: green;
+    transition: all .3s ease-in-out;
+    margin-top: 30px;
+    outline: none;
+}
+#deal-overview button:hover, .btn-to-deal:hover {
+	background-color: darkgreen;
+}
+.btn-to-deal {
+	display: block;
+	margin: 0 auto;
+
 }
 article {
-	
 	padding: 50px 10px 30px 10px;
 }
 h1 {
 	font-size: 1.7em;
 }
-article p {
+article p, .popover p {
 	margin: 0;
 	font-family: 'Open Sans', sans-serif;
+}
+.popover-content p {
+	margin-bottom: 20px;
+	color: #000;
 }
 figure {
 	margin: 0;
@@ -45,8 +63,38 @@ figure {
 p:last-child {
 	margin-bottom: 0;
 }
+/*popover*/
 
-/*
-font-family: 'Roboto', sans-serif;
-font-family: 'Open Sans', sans-serif;
-*/
+.popover strong {
+	color: darkred;
+	font-family: 'Dosis', sans-serif;
+}
+
+.popover #close {
+	position: relative;
+	bottom: 5px;
+}
+.popover .form-control {
+	margin-bottom: 20px;
+}
+.popover .form-control:focus {
+	border-color: green;
+}
+.popover .form-control option:active{
+	border-color: green!important;
+}
+@media(max-width:767px) {
+	#deal-overview a.btn {
+		display: block;
+		margin: 30px auto 0 auto;
+		background-color: green;
+		color: #fff;
+	}
+	#deal-overview a.btn:hover {
+		background-color: green;
+	}
+	.popover {
+		left: 11%!important;
+	}
+}
+
