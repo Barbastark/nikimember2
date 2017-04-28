@@ -24,7 +24,7 @@ body::-webkit-scrollbar {
 
 /* SITE NAVIGATION */
 .navbar {
-  background-color:rgba(0,0,0, 0.5);
+  background-color: #6f3333;
   opacity: 1;
   transition: all 0.5s ease-in-out;  
 }
@@ -32,15 +32,31 @@ body::-webkit-scrollbar {
     width: 70%;
     height: 70%;
 }
-.nav .nav-item .nav-link {
-  color: #d1d1d1;
+.nav .nav-item .nav-link, #site-nav .dropdown-item {
+    color: #d1d1d1;
 }
-.nav .nav-item .nav-link:hover {
-  color: #fff;
+.nav .nav-item .nav-link:hover, #site-nav .dropdown-item:hover {
+    color: #fff;
 }
 #site-nav.sitenav-hidden {
     opacity: 0;
     transition: all 0.5s ease-in-out;
+}
+#site-nav .dropdown-toggle {
+    background-color: transparent;
+    border: 0;
+    outline: none;
+    color: #d1d1d1;
+    padding: .595rem 0 0 0;
+}
+#site-nav #dropdown-faq {
+    top: 45px;
+    left: -60px;
+    background-color: #6f3333;
+}
+
+#site-nav .dropdown-item:hover {
+    background-color: rgba(0,0,0,0.2);
 }
 /* END SITE NAVIGATION */
 
@@ -82,15 +98,23 @@ body::-webkit-scrollbar {
     margin-left: .5vw;
 }
 #btn-category-toggler {
-    background-color: transparent;
+    background-color: transparent!important;
     border: 0;
     outline-color: transparent;
     color: #fff;
     font-size: 1.5vw;
 }
-.category-link {
-    
+.toggle-icon {
+    transition: .5s ease-in-out;
 }
+.toggle-icon-rotate {
+    transform: rotate(180deg);
+}
+.tooltip {
+    margin-left: -40px;
+     
+}
+
 /*categories dropdown section*/
 
 .filter {
@@ -183,9 +207,8 @@ body::-webkit-scrollbar {
     position: relative;
 }
 
-
 .deals .original-price {
-    color: green;
+    color: darkgreen;
    
 }
 .deals .cashback span, .deals .contribution span {
@@ -204,7 +227,7 @@ body::-webkit-scrollbar {
     margin-bottom: 0px;
 }
 .deals .price-tag {
-    color: red;
+    color: darkred;
 }
 .deals h2 {
     font-size: .9em;
@@ -215,7 +238,7 @@ body::-webkit-scrollbar {
 /* FOOTER */
 #footer {
     padding:2rem 0;
-    background-color:transparent;
+    background-color: rgba(0,0,0,0.4);
     color:white;
 }
 #footer a {
@@ -230,7 +253,7 @@ body::-webkit-scrollbar {
 }
 #footer a.btn:hover {
     background-color: #fff;
-    color: #c85a5b;
+    color: darkred;
     transition: all .3s ease-in-out;
 }
 #footer img {
@@ -271,12 +294,17 @@ body::-webkit-scrollbar {
         background: url('../img/nikilogo.png');
         background-repeat: no-repeat;
         background-position: center 12px;
-        background-color: rgba(0,0,0,0.5);
+        background-color: #6f3333;
     }
     #navigation {
-       
         margin-top: 50px;
-        
+    }
+    #site-nav .dropdown-toggle {
+        padding: 5px 0;
+    }
+    #site-nav #dropdown-faq {
+        background-color: transparent;
+        border: none;
     }
     #btn-mobile-dropdown-toggle { 
         position: fixed;
@@ -294,11 +322,12 @@ body::-webkit-scrollbar {
     }
     #category-dropdown-mobile {
         position: absolute;
-        top: 13px;
+        top: 12px;
         left: -0px;
         width: 100%;
+        border: 0;
         border-radius: 0;
-        background-color: rgba(0,0,0,0.5);
+        background-color: #6f3333;
         color: #fff;
     }
     #category-dropdown-mobile a {
@@ -307,7 +336,6 @@ body::-webkit-scrollbar {
     #category-dropdown-mobile-container {
         width: 100%;
         position: relative;
-        
     }
 
     #nav-icon {margin-left: 10px;}
@@ -320,6 +348,11 @@ body::-webkit-scrollbar {
 
     /*FOOTER*/
     #footer {text-align: center;}
+    #footer a.btn {
+       margin: 0 auto 15px auto;
+       width: 98%;
+       font-size: 10px;
+    }
 }
 
 @media(min-width:1921px) {

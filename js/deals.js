@@ -2,17 +2,20 @@ var offer = new Offer();
 
 //Functions for common tasks
 function latestDeals() {
+  var i = 0.6;
   offer.getCollection(function(data) {
     $('#latest-deals').append(
           dealContainer('Senaste Erbjudanden', 'latest-deals-container')
         );
     $( data ).each(function( index, value ) {
-      $('#latest-deals-container').append(deals(value));
+      $('#latest-deals-container').append(deals(value, i));
+        i += 0.1;
     });
   });
 }
 
 function popularDeals() {
+  var i = 0.1;
   offer.setPage('1')
   offer.setResults('8')
   offer.setFilter('badges=POPULAR_OFFER')
@@ -21,12 +24,13 @@ function popularDeals() {
         dealContainer('Populära Erbjudanden', 'popular-deals-container')
       );
     $( data ).each(function( index, value ) {
-      $('#popular-deals-container').append(deals(value));
+      $('#popular-deals-container').append(deals(value, i));
+        i += 0.1;
     });
   });
 }
 
-//Carousel
+//When document is fully loaded (carousel, popular deals, latest deals)
 $(function() {
   var i = 0;
   var className;
@@ -49,15 +53,14 @@ $(function() {
   });
 });
 
-//When document is fully loaded
 latestDeals();
 popularDeals();
 
-//Search
+//Search box 
 $( "#search" ).keyup(function() {
   var value = $('#search').val()
   var text = $('#latest-deals-header').html()
-  console.log(text)
+ 
   $('#latest-deals-container, #popular-deals, #popular-deals-container').empty()
   offer.setResults(null);
   offer.setPage(null)
@@ -72,7 +75,7 @@ $( "#search" ).keyup(function() {
     } else {
         if( text !== 'Sökresultat') {
           $('#latest-deals').empty()
-          console.log(text)
+          
           $('#latest-deals').append(
             dealContainer('Sökresultat', 'latest-deals-container')
           );
@@ -84,10 +87,10 @@ $( "#search" ).keyup(function() {
   });
 });
 
-//Popular Search
+//Popular Search Terms
 $( ".popular-search" ).on('click', function() {
   var value = this.text
-  console.log(value)
+  
   $('#latest-deals, #latest-deals-container, #popular-deals, #popular-deals-container').empty()
   offer.setResults(null);
   offer.setPage(null)
@@ -132,12 +135,7 @@ $('.category-link, .category-search, .category-mobile-link').click(function() {
   });
 });
 
-//Removes class from mobile nav toggle button when clicked
 
-$(".nav-link-mobile").click(function() {
-  $("#nav-icon").removeClass('open');
-  $(".navbar-toggleable-sm").collapse('hide');
-});
 
 
 

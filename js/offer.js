@@ -3,6 +3,7 @@ class Offer {
     constructor(token) {
         this._baseUri  = "https://www.nikimember.se/api/v0.1";
         this._offerUrl = "/offers";
+        this._cardsUrl = "/cards";
 
         this.resetQueryState();
     }
@@ -14,7 +15,7 @@ class Offer {
             fields: null,
             order_by: "-id",
             page: 1,
-            results: 10
+            results: 9
         }
     }
 
@@ -51,8 +52,46 @@ class Offer {
     {
         this._queryState.page = page;
     }
+    //Niklas klåparmetoder
+    getMemberCard(userId, callback){// 1:a anrop
 
+        this._request({
+            url: this._getCardsUrl()+"/"+userId, //1:1
+            method: "GET",
+            data: [],
+            ifModifiedSince: null
+        },callback)
+    }
+    getMemberGroups(userId, callback){// 1:a anrop
+        var params = {
+            filter: '"user_id='+userId+'"',
+            embeds: "groups"
+        };
 
+        var str = "";
+        var iteration = 0;
+        $.each(params, function(key, value){
+            if(value != null){
+                if(iteration == 0){
+                    str += "?";
+                }else{
+                    str += "&";
+                }
+
+                str += key+"="+value;
+
+                iteration++;
+            }
+        });
+        this._request({
+            url: this._getCardsUrl()+str, //1:1
+            method: "GET",
+            data: [],
+            ifModifiedSince: null
+        },function(data, embedded){
+            callback(embedded);
+        })
+    }
     getCollection(callback)
     {
         var queryString = this._createQueryString();
@@ -81,11 +120,11 @@ class Offer {
                 iteration++;
             }
         });
-        console.log(str)
+        //console.log(str)
         return str;
     }
 
-    _request(options, callback){
+    _request(options, callback){ // 2:a 
         var that = this;
         if(!options.data){
             options.data = [];
@@ -108,13 +147,23 @@ class Offer {
             }
         })
     }
-
-    _getBaseUrl(){
-        return this._baseUri+this._offerUrl;
+    _getCardsUrl(){
+        return this._baseUri+this._cardsUrl;
     }
 
-    _handleResponse(data, callback){
+    _getBaseUrl(){
+        return this._baseUri+this._offerUrl; //1:2
+    }
+
+    _handleResponse(data, callback){ // 3:e anrop
+        var embedded = false;
+        if(data.embedded !== undefined){
+            embedded = data.embedded;
+        }
+
         data = data.data;
-        callback(data);
+        
+        callback(data, embedded);
+        //console.log(data)
     }
 }

@@ -7,6 +7,7 @@
 	    <meta http-equiv="x-ua-compatible" content="ie=edge">
 		
 		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js">
 	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
 		<link href='https://fonts.googleapis.com/css?family=Alegreya+Sans:400,500,700' rel='stylesheet' type='text/css'> 
 	    <link rel="stylesheet" href="css/deal.css">
@@ -19,28 +20,61 @@
 			
 		</div>
 		<!-- External Scripts -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
 	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js" integrity="sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY" crossorigin="anonymous"></script>
-	    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
 	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/js/bootstrap.min.js" integrity="sha384-ux8v3A6CPtOTqOzMKiuo3d/DomGaaClxFYdCu2HPMBEkf6x2xiDyJ7gkXU0MWwaD" crossorigin="anonymous"></script>
 	    <script src="js/wow.min.js"></script>
 	    <script> new WOW().init(); </script>
 
 	    <!-- Custom Scripts -->
+	    <script src="js/user_data.js"></script>
 	    <script src="js/offer.js"></script>
 	    <script src="js/templates.js"></script>
 	    <script src="js/deals.js"></script>
 	    <script>
-	    	//When user clicks on a spesific deal
-			$('#dealHtml').ready(function() {
+			$(document).ready(function() {
 			  var id = window.location.hash;
 			      id = id.substring(1,id.length);
+			  var group = 'Nikifriends';
+			  var loggedIn = true;
 
-			    offer.getOne(id, function(data) {
-			      $('#site-wrapper').append(dealDetails(data));
-			  });
-			});
-	    </script>
-	</body>
+			offer.getOne(id, function(data) {
+		      $('#site-wrapper').append(dealDetails(data));
+		      $('[data-toggle="tooltip"]').tooltip()
+		      $('[data-toggle="popover"]').popover()
+		      $('#btn-activate').on('click', function() {
+
+			  if(loggedIn) {
+		      	$('#btn-toggle-popup').data('offerid', data.id)
+		      	$('#btn-toggle-popup').data('groupid', data.group_id)
+		      	$('#btn-toggle-popup').data('groupname', data.name)
 	
+		      	var groups = offer.getMemberGroups(793, function(data) {
+			  	  $.each(data, function(key, value){
+			  	  	$('#group-list').append(groupList(value))
+			  	  })
+			  	  $("#btn-activate").popover({
+			  		  placement: 'top',
+			  	      html: true,
+			  	      title : '<span class="text-info"><strong>Till Erbjudandet</strong></span>'+
+			  	              '<button type="button" id="close" class="close" 	onclick="$(&quot;#btn-activate&quot;).popover(&quot;hide&quot;);">&times;</button>',
+			  	      content : $("#popover-content").html(),
+			  	      trigger: 'click'
+			  	   });
+			 	  });
+				 } else {
+			     	window.location.href = "https://www.nikimember.se/signup";
+			     }
+			});		
+		  });
+		});
+		</script>
+		<div id="popover-content" style="display:none">
+		<p>Välj vilken förening du vill stödja</p>
+		<select id="group-list" class="form-control">
+		</select>
+		<button id="btn-toggle-popup" class="btn btn-primary btn-to-deal">Till webshopen</button>
+		</div>
+	</body>
 </html>
 

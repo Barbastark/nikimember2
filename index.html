@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="font-awesome/css/font-awesome.css">
     <link rel="stylesheet" href="css/animate.min.css">
   </head>
-  <body id="main">
+  <body id="main" class="wow fadeIn animated" data-wow-delay="0.5s" data-wow-duration="1s">
     <!-- SITE NAVIGATION -->
     <nav id="site-nav" class="navbar navbar-fixed-top">
 	    <button id="nav-icon" class="navbar-toggler float-xs-left hidden-md-up" data-toggle="collapse" data-target="#navigation">
@@ -34,23 +34,31 @@
            <a id="home-link" class="nav-link nav-link-mobile" href="#">START</a>
          </li>
          <li class="nav-item">
-           <a class="nav-link nav-link-mobile" href="#">FÖR FÖRENINGAR</a>
+           <a class="nav-link nav-link-mobile" href="organization.html">FÖR FÖRENINGAR</a>
          </li>
          <li class="nav-item">
-           <a class="nav-link nav-link-mobile" href="#">FÖR FÖRETAG</a>
+           <a class="nav-link nav-link-mobile" href="company.html">FÖR FÖRETAG</a>
          </li>
          <li class="nav-item">
-           <a class="nav-link nav-link-mobile" href="#">EXEMPEL</a>
+           <a class="nav-link nav-link-mobile" href="contact.html">KONTAKTA OSS</a>
          </li>
          <li class="nav-item">
-           <a class="nav-link nav-link-mobile" href="#">FAQ</a>
+           <div class="dropdown show">
+              <a class="btn btn-secondary dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                FAQ
+              </a>
+              <div id="dropdown-faq" class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="faq_user.html">För användare</a>
+                <a class="dropdown-item" href="faq_organization.html">För föreningar</a>
+                <a class="dropdown-item" href="faq_sponsor.html">För sponsorer</a>
+              </div>
+            </div>
          </li>
          <li class="nav-item">
-           <a class="nav-link nav-link-mobile" href="#">LOGGA IN</a>
+           <a class="nav-link nav-link-mobile" href="https://www.nikimember.se/login">LOGGA IN</a>
          </li>
         </ul>
        </div>
-      	          
        <div id="category-dropdown-mobile-container" class="dropdown hidden-md-up float-xs-right">
           <button id="btn-mobile-dropdown-toggle" class="btn btn-secondary float-xs-right " type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fa fa-filter" aria-hidden="true"></i>
@@ -111,8 +119,9 @@
          </li>
         </ul>
         <div>
-          <button id="btn-category-toggler" class="btn btn-secondary float-xs-right" type="button">
-            <i class="fa fa-filter" aria-hidden="true"></i>
+          <button id="btn-category-toggler" class="btn btn-secondary float-xs-right" type="button" data-toggle="tooltip" data-placement="top" title="Visa fler kategorier" data-container="#btn-category-toggler">
+            <i class="fa fa-filter hidden-xs-up" aria-hidden="true"></i>
+            <i class="fa fa-angle-down toggle-icon"></i>
           </button>
         </div>
      </nav>
@@ -172,7 +181,7 @@
     <!-- END DEALS -->
 
     <!-- FOOTER -->
-    <section id="footer">
+    <footer id="footer">
       <div class="container wow fadeInUp" data-wow-delay="0.4s" data-wow-duration="1.5s">
         <div class="row">
           <div class="col-md-8 col-sm-6">
@@ -195,7 +204,7 @@
             <h3>Kontakta Oss:</h3>
             <ul class="list-unstyled">
               <li><p><strong><i class="fa fa-map-marker"></i> Adress:</strong> Sveavägen 166, 4tr</p></li>
-              <li><p><strong><i class="fa fa-envelope"></i> Epost: </strong> email@nikimember.se<a href="#"></a></p></li>
+              <li><p><strong><i class="fa fa-envelope"></i> Epost: </strong> <a href="mailto:info@nikified.com">info@nikified.com</a></p></li>
               <li><p><strong><i class="fa fa-phone"></i> Tel: </strong>08-566 280 50</p></li>
               <li><p><a href="https://www.facebook.com/nikimember/"><i class="fa fa-facebook"></i><strong>Besök oss på facebook</strong></a></p></li>
             </ul>
@@ -207,7 +216,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </footer>
     <!-- END FOOTER -->
 
     <!-- External Scripts -->
@@ -218,12 +227,24 @@
     <script> new WOW().init(); </script>
 
     <!-- Custom Scripts -->
+    <script src="js/user_data.js"></script>
     <script src="js/offer.js"></script>
     <script src="js/templates.js"></script>
     <script src="js/deals.js"></script>
     <script src="js/animations.js"></script>
     <script>
+      var user_data = new userData();
+      user_data.setUserId();
+      user_data.setToken();
       
+      setTimeout(function(){
+        var x = user_data.getUserId();
+        console.log(x)
+      },500)
+      
+      $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip('show'); 
+      });
     </script>
 	</body>
 </html>
