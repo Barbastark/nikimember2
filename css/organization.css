@@ -146,6 +146,7 @@ body {
 #contact #contact-form button {
 	color: #fff;
 	border-color: #fff;
+	outline: none;
 	transition: .3s ease-in-out;
 }
 #contact #contact-form button:hover {
@@ -176,10 +177,7 @@ body {
 #contact .form-control:focus:-moz-placeholder { /* Firefox 18- */
   color: #666;
 }
-#contact #contact-form button {
-	background-color: darkred;
-	border-color: darkred;
-}
+
 @media(max-width:767px) {
 	#organization figure {
 		width: 100%;
@@ -200,10 +198,19 @@ body {
 		background-color: darkred;
 		color: #fff;
 	}
-	#login #form-wrapper {
+	#contact #form-wrapper {
 		padding: 0;
 	}
-
+	#contact #contact-form {
+		
+		border-radius: 0;
+		
+	}
+	#contact #contact-form button {
+		color: #6f3333;
+		background-color: #fff;
+		border-color: #fff;
+	}
 }
 @media(max-width:992px) {
 	#organization figure {
@@ -211,7 +218,6 @@ body {
 	}
 }
 @media(min-width:1921px) {
-
 	#organization img {
 		width: 500px;
 		float: right;

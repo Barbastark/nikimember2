@@ -30,6 +30,7 @@ function getType(value) {
   if(value._type === 'offers_form') {
     type = 'form';
   }
+  //console.log(type)
   return type;
 }
 
@@ -63,19 +64,24 @@ function formatPriceAndCashback(value, cashback) {
 
 function calcGrant(value, type) {
   var grant;
+
   if(value.group_cashback_percentage === 0 && value.group_cashback_decimal === 0){
     grant = 0 + 'kr';
+    return grant;
   }
   if(type === "adtraction_program" && value.displayed_discount_type === "PERCENTAGE" &&  value.group_cashback_percentage > 0) {
     grant = value.group_cashback_percentage + '%';
+    return grant;
   }
   if(value.group_cashback_percentage > 0) {
     grant = formatPrice(value.price / 100 * value.group_cashback_percentage) + 'kr'
+    return grant;
   }
   if(value.displayed_discount_type === "DECIMAL" && value.group_cashback_decimal > 0) {
     grant = formatPrice(value.group_cashback_decimal) + 'kr';
+    return grant;
   }
-  return grant;
+  
 }
     
 function calcCashback(value, type) {
@@ -83,20 +89,25 @@ function calcCashback(value, type) {
   
   if(value.user_cashback_percentage === 0 && value.user_cashback_decimal === 0) {
     cashback = 0 + 'kr';
+    return cashback;
   }
   if(type === "adtraction_program" && value.displayed_discount_type === "PERCENTAGE" && value.user_cashback_percentage > 0){
     cashback = value.user_cashback_percentage + '%';
+    return cashback;
   }
   if(value.user_cashback_percentage > 0) { 
     cashback = formatPrice((value.price * 0.8) / 100 * value.user_cashback_percentage) + 'kr';
+    return cashback;
   }
   if(value.displayed_discount_type === "DECIMAL" && value.user_cashback_decimal > 0) {
     cashback = formatPrice(value.user_cashback_decimal * 0.8) + 'kr';
+    return cashback;
   }
   if(value.price < 0) {
     cashback = formatPrice((value.price)*(-1));
+    return cashback;
   }
-  return cashback;
+  
 }
 
 $(document).on("click", "#btn-toggle-popup", function(){
@@ -146,6 +157,7 @@ function dealContainer(name, id) {
 
 function deals(value, i) {
   value = replaceNullValues(value)
+  console.log(value)
   var type = getType(value) 
   var grant = calcGrant(value,type) 
   var cashback = calcCashback(value,type)
@@ -161,7 +173,7 @@ function deals(value, i) {
                 '<h2>' + value.title +'</h2>' +
                 (value.original_price > value.price ? '<p class="original-price" style="text-decoration:line-through;">' + value.original_price + 'kr</p>' : '<p class="original-price" style="visibility: hidden"><strike>' + value.original_price + 'kr</strike></p>' )+
                 (formatPriceAndCashback(value, cashback))+
-                '<p class="contribution"><span>Föreningsbidrag:</span> ' + grant + '</p>' +
+                '<p class="contribution"><span>Föreningsbidrag:</span> ' + grant + '</p>'+
               '</section>' +
             '</article>' +
           '</div>'
@@ -174,6 +186,7 @@ function dealDetails(data) {
   var cashback = calcCashback(data,type)
   
   return '<div id="deal-overview" class="row">'+
+              '<div id="btn-back"><a href="index.html"><i class="fa fa-2x fa fa-angle-double-left"></i><span>Till alla erbjudanden</span></a></div>'+ 
             '<figure class="col-sm-6 wow fadeInLeft fadeIn" data-wow-duration="1s" data-wow-delay=".2s">'+
               '<img class="img-fluid" src="https://www.nikimember.se/images/' + data.image_ids[0] +  '"' + ' alt="deal image"/>'+
             '</figure>'+
