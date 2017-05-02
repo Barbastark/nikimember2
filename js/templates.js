@@ -69,7 +69,7 @@ function calcGrant(value, type) {
     grant = 0 + 'kr';
     return grant;
   }
-  if(type === "adtraction_program" && value.displayed_discount_type === "PERCENTAGE" &&  value.group_cashback_percentage > 0) {
+  if(type === "adtraction_program" &&  value.group_cashback_percentage > 0) {
     grant = value.group_cashback_percentage + '%';
     return grant;
   }
@@ -91,7 +91,7 @@ function calcCashback(value, type) {
     cashback = 0 + 'kr';
     return cashback;
   }
-  if(type === "adtraction_program" && value.displayed_discount_type === "PERCENTAGE" && value.user_cashback_percentage > 0){
+  if(type === "adtraction_program" && value.user_cashback_percentage > 0){
     cashback = value.user_cashback_percentage + '%';
     return cashback;
   }
@@ -157,7 +157,7 @@ function dealContainer(name, id) {
 
 function deals(value, i) {
   value = replaceNullValues(value)
-  console.log(value)
+  
   var type = getType(value) 
   var grant = calcGrant(value,type) 
   var cashback = calcCashback(value,type)
@@ -184,7 +184,7 @@ function dealDetails(data) {
   var type = getType(data) 
   var grant = calcGrant(data,type) 
   var cashback = calcCashback(data,type)
-  
+  console.log(data)
   return '<div id="deal-overview" class="row">'+
               '<div id="btn-back"><a href="index.html"><i class="fa fa-2x fa fa-angle-double-left"></i><span>Till alla erbjudanden</span></a></div>'+ 
             '<figure class="col-sm-6 wow fadeInLeft fadeIn" data-wow-duration="1s" data-wow-delay=".2s">'+
