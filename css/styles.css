@@ -29,8 +29,8 @@ body::-webkit-scrollbar {
   transition: all 0.5s ease-in-out;  
 }
 .navbar img {
-    width: 70%;
-    height: 70%;
+    width: 90%;
+    height: 90%;
 }
 .nav .nav-item .nav-link, #site-nav .dropdown-item {
     color: #d1d1d1;
@@ -47,7 +47,7 @@ body::-webkit-scrollbar {
     border: 0;
     outline: none;
     color: #d1d1d1;
-    padding: .595rem 0 0 0;
+    padding: .588rem 0 0 0;
 }
 #site-nav #dropdown-faq {
     top: 45px;
@@ -104,17 +104,27 @@ body::-webkit-scrollbar {
     color: #fff;
     font-size: 1.5vw;
 }
-.toggle-icon {
+#categories-filter-navigation .toggle-icon {
     transition: .5s ease-in-out;
 }
-.toggle-icon-rotate {
+#categories-filter-navigation .toggle-icon-rotate {
     transform: rotate(180deg);
 }
-.tooltip {
-    margin-left: -40px;
-     
+#main .popover.bs-tether-element-attached-bottom::after,
+#main .popover.bs-tether-element-attached-bottom::before{
+    left: 87%;
 }
-
+#main .popover h3 {
+    background-color: #fff;
+}
+#main .popover-title {
+    border-bottom:0;
+}
+#main .popover-content {
+    height: 0;
+    margin:0;
+    padding:0;
+}
 /*categories dropdown section*/
 
 .filter {
@@ -194,6 +204,9 @@ body::-webkit-scrollbar {
 
 .deals .img-overlay:hover {
     opacity:1;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+
  }
 .deal-info {
     font-family: 'Dosis', sans-serif;

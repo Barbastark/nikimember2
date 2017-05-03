@@ -37,27 +37,28 @@ function getType(value) {
 function formatPriceAndCashback(value, cashback) {
   var main = document.getElementById('main')
   var deal = document.getElementById('deal')
-
+   
+  //console.log(typeof(cashback))
   if(value.price === 0) {
     if(main !== null) {
-      return '<p class="price-tag">Gratis</p><p class="cashback"><span>Din Cashback: </span>' + cashback + '</p>' 
+      return '<p class="price-tag">Gratis</p>'+ (cashback === false ? '<p class="cashback" style="visibility:hidden;"><span>Din Cashback:</span></p>':'<p class="cashback"><span>Din Cashback: </span>' + cashback + '</p>') 
       }
     if(deal !== null) {
-      return '<h2>Pris</h2><p class="price-tag">Gratis</p><h2>Din Cashback</h2><p class="cashback">'+ cashback + '</p>'
+      return '<h2>Pris</h2><p class="price-tag">Gratis</p>'+ (cashback === false ? '<h2 style="display: none;">Din Cashback</h2><p class="cashback" style="display: none;"></p>':'<h2>Din Cashback</h2><p class="cashback">'+ cashback + '</p>')
       }
     } else if(value.price < 0) {
-      if(main !== null) {
-        return '<p class="price-tag" style="visibility:hidden">Gratis</p><p class="cashback" style="color: red"><span>Rabatt: ' + cashback + 'kr</p>'
-      }
-      if(deal !== null) {
-        return '<h2 style="color: red">Rabatt</h2><p style="color: red" class="cashback">'+ cashback + 'kr</p>'
-      }
-    } else {
         if(main !== null) {
-          return '<p class="price-tag">' + value.price + 'kr</p><p class="cashback"><span>Din Cashback:</span> ' + cashback + '</p>'
+          return '<p class="price-tag" style="visibility:hidden">Gratis</p><p class="cashback" style="color: red"><span>Rabatt:' + cashback + 'kr</p>'
         }
         if(deal !== null) {
-          return '<h2>Pris</h2><p class="price-tag">'+value.price+'kr</p><h2>Din Cashback</h2><p class="cashback">'+ cashback + '</p>'
+          return '<h2 style="color: red">Rabatt</h2><p style="color: red" class="cashback">'+ cashback + 'kr</p>'
+        }
+    } else {
+        if(main !== null) {
+          return '<p class="price-tag">' + value.price + 'kr</p>' +  (cashback === false ? '<p class="cashback" style="visibility:hidden;"><span>Din Cashback:</span> ' + cashback + '</p>' :'<p class="cashback"><span>Din Cashback:</span> ' + cashback + '</p>')
+        }
+        if(deal !== null) {
+          return '<h2>Pris</h2><p class="price-tag">'+value.price+'kr</p>'+(cashback === false ? '<h2 style="display: none;">Din Cashback</h2><p class="cashback" style="display:none;">'+ cashback + '</p>':'<h2>Din Cashback</h2><p class="cashback">'+ cashback + '</p>')
         }
     }
 } 
@@ -70,7 +71,7 @@ function calcGrant(value, type) {
     return grant;
   }
   if(type === "adtraction_program" &&  value.group_cashback_percentage > 0) {
-    grant = value.group_cashback_percentage + '%';
+    grant = value.group_cashback_percentage + '%'; 
     return grant;
   }
   if(value.group_cashback_percentage > 0) {
@@ -81,14 +82,13 @@ function calcGrant(value, type) {
     grant = formatPrice(value.group_cashback_decimal) + 'kr';
     return grant;
   }
-  
 }
     
 function calcCashback(value, type) {
   var cashback;
   
-  if(value.user_cashback_percentage === 0 && value.user_cashback_decimal === 0) {
-    cashback = 0 + 'kr';
+  if(value.user_cashback_percentage === 0 && value.user_cashback_decimal === 0){
+    cashback = false;
     return cashback;
   }
   if(type === "adtraction_program" && value.user_cashback_percentage > 0){
@@ -107,7 +107,6 @@ function calcCashback(value, type) {
     cashback = formatPrice((value.price)*(-1));
     return cashback;
   }
-  
 }
 
 $(document).on("click", "#btn-toggle-popup", function(){
