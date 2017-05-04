@@ -4,6 +4,7 @@ class Offer {
         this._baseUri  = "https://www.nikimember.se/api/v0.1";
         this._offerUrl = "/offers";
         this._cardsUrl = "/cards";
+        this._categoriesUrl = "/categories";
 
         this.resetQueryState();
     }
@@ -19,7 +20,8 @@ class Offer {
         }
     }
 
-    getOne(id, callback){
+    getOne(id, callback)
+    {
         this._request({
             url: this._getBaseUrl()+"/"+id,
             method: "GET",
@@ -52,7 +54,16 @@ class Offer {
     {
         this._queryState.page = page;
     }
-    //Niklas klåparmetoder
+
+    getCategories(callback){/*******/
+        this._request({
+            url: this._getCategoriesUrl(),
+            method: "GET",
+            data: [],
+            ifModifiedSince: null
+        },callback)
+    }
+
     getMemberCard(userId, callback){// 1:a anrop
 
         this._request({
@@ -62,6 +73,7 @@ class Offer {
             ifModifiedSince: null
         },callback)
     }
+
     getMemberGroups(userId, callback){// 1:a anrop
         var params = {
             filter: '"user_id='+userId+'"',
@@ -92,6 +104,7 @@ class Offer {
             callback(embedded);
         })
     }
+
     getCollection(callback)
     {
         var queryString = this._createQueryString();
@@ -147,12 +160,17 @@ class Offer {
             }
         })
     }
+
+    _getCategoriesUrl(){
+        return this._baseUri+this._categoriesUrl;
+    }
+    
     _getCardsUrl(){
         return this._baseUri+this._cardsUrl;
     }
 
     _getBaseUrl(){
-        return this._baseUri+this._offerUrl; //1:2
+        return this._baseUri+this._offerUrl; 
     }
 
     _handleResponse(data, callback){ // 3:e anrop
@@ -162,8 +180,8 @@ class Offer {
         }
 
         data = data.data;
-        
+        console.log(data)
         callback(data, embedded);
-        //console.log(data)
+        
     }
 }

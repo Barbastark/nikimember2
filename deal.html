@@ -6,6 +6,9 @@
 	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	    <meta http-equiv="x-ua-compatible" content="ie=edge">
 		
+		<!-- Favicon -->
+	    <link rel="shortcut icon" href="img/fav.png">
+		
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js">
 	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
@@ -33,13 +36,14 @@
 	    <script src="js/deals.js"></script>
 	    <script>
 			$(document).ready(function() {
+
 			  var id = window.location.hash;
 			      id = id.substring(1,id.length);
 			  var group = 'Nikifriends';
 			  var loggedIn = true;
-
+			  
 			offer.getOne(id, function(data) {
-		      $('#site-wrapper').append(dealDetails(data));
+		      $('#site-wrapper').append(dealDetails(data, categoryArr));
 		      $('[data-toggle="tooltip"]').tooltip()
 		      $('[data-toggle="popover"]').popover()
 		      $('#btn-activate').on('click', function() {

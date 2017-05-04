@@ -80,12 +80,22 @@ body::-webkit-scrollbar {
 #categories-filter-navigation {
     padding: 0 5px;
     border-radius: 0;
+    text-align: center;
 }
 
 #categories-filter-navigation ul {
     font-size: 1.17vw;
 }
+#categories-filter-navigation ul,
+#categories-filter-navigation li {/**/
+    float: none;
+    display: inline;
+}
+#categories-filter-navigation li {/**/
+    display: inline;
+}
 #categories-filter-navigation a {
+    display: inline-block;/**/
     padding: 8px 10px;
    text-transform: uppercase;
 }
@@ -368,11 +378,8 @@ body::-webkit-scrollbar {
     }
 }
 
-@media(min-width:1921px) {
+@media(min-width:1920px) {
     #categories-filter-navigation ul, #btn-category-toggler {
-        font-size: 25px;
+        font-size: 20px;
     }
 }
-
-
-

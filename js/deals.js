@@ -1,5 +1,15 @@
+
 var offer = new Offer();
 
+//Hämtar kategorier
+var categoryArr = []
+function fetchCategories() {
+  offer.getCategories(function(data){
+    for(var i = 0; i < data.length; i++) {
+      categoryArr.push(data[i].name)
+    }
+  })
+}
 //Functions for common tasks
 function latestDeals() {
   var i = 0.6;
@@ -8,7 +18,7 @@ function latestDeals() {
           dealContainer('Senaste Erbjudanden', 'latest-deals-container')
         );
     $( data ).each(function( index, value ) {
-      $('#latest-deals-container').append(deals(value, i));
+      $('#latest-deals-container').append(deals(value, i, categoryArr));
         i += 0.1;
     });
   });
@@ -24,7 +34,7 @@ function popularDeals() {
         dealContainer('Populära Erbjudanden', 'popular-deals-container')
       );
     $( data ).each(function( index, value ) {
-      $('#popular-deals-container').append(deals(value, i));
+      $('#popular-deals-container').append(deals(value, i, categoryArr));
         i += 0.1;
     });
   });
@@ -52,7 +62,7 @@ $(function() {
     });
   });
 });
-
+fetchCategories();
 latestDeals();
 popularDeals();
 
@@ -81,7 +91,7 @@ $( "#search" ).keyup(function() {
           );
         }
       $( data ).each(function( index, value ) {
-        $('#latest-deals-container').append(deals(value));
+        $('#latest-deals-container').append(deals(value, null, categoryArr));
       });
     }
   });
@@ -100,7 +110,7 @@ $( ".popular-search" ).on('click', function() {
         dealContainer('Sökresultat', 'latest-deals-container')
       );
       $( data ).each(function( index, value ) {
-        $('#latest-deals-container').append(deals(value));
+        $('#latest-deals-container').append(deals(value,null,categoryArr));
       });
    });
 });
@@ -120,7 +130,6 @@ $('.category-link, .category-search, .category-mobile-link').click(function() {
     var id = target.data('id')
     return id;
   }
-
   var content = this.text;
 
   offer.setFilter('category_id=' + getId($(this)))
@@ -130,10 +139,11 @@ $('.category-link, .category-search, .category-mobile-link').click(function() {
     $('#latest-deals').append( dealContainer(content, 'latest-deals-container'));
 
     $( data ).each(function( index, value ) {
-      $('#latest-deals-container').append(deals(value));
+      $('#latest-deals-container').append(deals(value, null, categoryArr));
     });
   });
 });
+
 
 
 
