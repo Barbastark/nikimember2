@@ -1,11 +1,19 @@
-/*FONTS*/
+/*FONT*/
 @import url('https://fonts.googleapis.com/css?family=Dosis|Open+Sans:300|Roboto');
 
-/* GLOBAL*/
+#site-nav, #site-nav .btn, #categories-filter-navigation {
+    font-family: 'Alegreya Sans', sans-serif;
+}
+h1, h2, h3, h4, h5, h6, .deal-card p, span, .btn {
+    font-family: 'Dosis', sans-serif;
+}
+p, .faq {
+    font-family: 'Open Sans', sans-serif;
+}
+
+/*------------------------ GLOBAL ---------------------------*/
 html, body {
     height:100%;
-    font-family: 'Alegreya Sans', sans-serif;
-
 }
 body {
     background: url('../img/bg-red.jpg');
@@ -20,19 +28,18 @@ body::-webkit-scrollbar {
     margin: 0;
     padding: 0;
 }
-/* END GLOBAL */
 
 /* SITE NAVIGATION */
 .navbar {
-  background-color: #6f3333;
-  opacity: 1;
-  transition: all 0.5s ease-in-out;  
+    background-color: #6f3333;
+    opacity: 1;
+    transition: all 0.5s ease-in-out;  
 }
 .navbar img {
     width: 90%;
     height: 90%;
 }
-.nav .nav-item .nav-link, #site-nav .dropdown-item {
+.nav .nav-item .nav-link, #site-nav .dropdown-item, #site-nav .dropdown-toggle {
     color: #d1d1d1;
 }
 .nav .nav-item .nav-link:hover, #site-nav .dropdown-item:hover {
@@ -46,7 +53,6 @@ body::-webkit-scrollbar {
     background-color: transparent;
     border: 0;
     outline: none;
-    color: #d1d1d1;
     padding: .588rem 0 0 0;
 }
 #site-nav #dropdown-faq {
@@ -59,7 +65,46 @@ body::-webkit-scrollbar {
     background-color: rgba(0,0,0,0.2);
 }
 /* END SITE NAVIGATION */
+/* FOOTER */
+#footer {
+    padding:2rem 0;
+    background-color: rgba(0,0,0,0.4);
+    color:white;
+}
+#footer a {
+    color:#fff;
+}
 
+#footer a.btn {
+    border: 1px solid #fff;
+    background-color: transparent;
+    transition: all .3s ease-in-out;
+    margin: 0 5px 15px 0;
+}
+#footer a.btn:hover {
+    background-color: #fff;
+    color: darkred;
+    transition: all .3s ease-in-out;
+}
+#footer img {
+    width: 135px;
+    height: 40px;
+    margin-bottom: 15px;
+}
+#app-links a:first-child {
+    margin-right: 10px;
+}
+#app-links a:last-child img {
+    border: 1px solid #bbb;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+#footer .fa {
+    padding:0 5px;
+}
+/*------------------------ END GLOBAL ----------------------*/
+
+/*------------------------ INDEX.HTML ----------------------*/
 /*HEADER*/
 #header {
     background-color: transparent;
@@ -95,9 +140,9 @@ body::-webkit-scrollbar {
     display: inline;
 }
 #categories-filter-navigation a {
-    display: inline-block;/**/
+    display: inline-block;
     padding: 8px 10px;
-   text-transform: uppercase;
+    text-transform: uppercase;
 }
 #categories-filter-navigation a:hover {
     background-color: rgba(0,0,0,0.2);
@@ -153,7 +198,6 @@ body::-webkit-scrollbar {
 .filter h1 {
     font-size: 1.5em;
     color: #d1d1d1;
-    font-family: 'Dosis', sans-serif;
 }
 .filter a {
     padding: 0;
@@ -177,17 +221,13 @@ body::-webkit-scrollbar {
 #popular-deals {
     background-color:#f6f6f6;
 }
-#popular-deals .deal-info {
+#popular-deals .deal-info, .deals {
     background-color: #fff;
 }
-#popular-deals h1, #latest-deals h1 {
-    font-family: 'Dosis', sans-serif;
-}
+
 .deals {
-    background-color: #fff;
     width: 100%;
     padding: 80px 0;
-    font-family: arial;
 }
 .deals hr {
     border-top: 1px solid #be2835;
@@ -208,18 +248,14 @@ body::-webkit-scrollbar {
     background-image: url('../img/eye (2).png');
     background-position: center center;
     background-repeat: no-repeat;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
     opacity: 0;
     transition: all 0.3s ease-in-out;
 }
 
 .deals .img-overlay:hover {
     opacity:1;
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
-
- }
-.deal-info {
-    font-family: 'Dosis', sans-serif;
 }
 .deals .deal-info {
     padding: 5px;
@@ -232,10 +268,9 @@ body::-webkit-scrollbar {
 
 .deals .original-price {
     color: darkgreen;
-   
 }
 .deals .cashback span, .deals .contribution span {
-   font-weight: bold;
+    font-weight: bold;
 }
 .deals .cashback, .deals .contribution {
     font-size: .8em;
@@ -257,46 +292,306 @@ body::-webkit-scrollbar {
     font-weight: bold;
 }
 /*END DEALS*/
+/*------------------------ END INDEX.HTML -----------------------------*/
 
-/* FOOTER */
-#footer {
-    padding:2rem 0;
-    background-color: rgba(0,0,0,0.4);
-    color:white;
+/*------------------------ DEAL.HTML -------------------------------*/
+#site-wrapper {
+    background-color:#f6f6f6;
+    padding: 0;
+    min-height: 100vh;
 }
-#footer a {
-    color:#fff;
-}
-
-#footer a.btn {
-    border: 1px solid #fff;
-    background-color: transparent;
-    transition: all .3s ease-in-out;
-    margin: 0 5px 15px 0;
-}
-#footer a.btn:hover {
+#deal-overview {
     background-color: #fff;
-    color: darkred;
-    transition: all .3s ease-in-out;
+    padding: 15px 0 30px 0;
 }
-#footer img {
-    width: 135px;
-    height: 40px;
-    margin-bottom: 15px;
+#deal-overview h2{
+    font-size: .8em;
+    margin: 0 0 3px 0;
 }
-#app-links a:first-child {
-    margin-right: 10px;
+#deal-overview p {
+    font-size: 1.5em;
+    margin-bottom: 10px;
 }
-#app-links a:last-child img {
-    border: 1px solid #bbb;
-    border-radius: 3px;
-    box-sizing: border-box;
+#deal-overview h2, #deal-overview p{
+    line-height: 1;
 }
-#footer .fa {
-    padding:0 5px;
+#deal-overview #btn-back {
+    padding: 0 0 15px 15px;
+    color: green;
+}
+#deal-overview #btn-back a {
+    color: green;
+}
+#deal-overview #btn-back a:hover {
+    text-decoration: none;
 }
 
-/* MOBILE */
+#deal-overview #btn-back span {
+    position: relative;
+    font-size: 20px;
+    font-weight: bold;
+    bottom: 3px;
+    left: 3px;
+}
+#deal-overview .original-price {
+    color: darkgreen;
+}
+#deal-overview .price-tag {
+    color: darkred;
+}
+#deal-overview button, .btn-to-deal {
+    border: 1px solid green;
+    color: #fff;
+    background-color: green;
+    transition: all .3s ease-in-out;
+    margin-top: 30px;
+    outline: none;
+}
+#deal-overview button:hover, .btn-to-deal:hover {
+    background-color: darkgreen;
+}
+#deal-overview .btn-to-deal {
+    display: block;
+    margin: 0 auto;
+}
+#deal-overview h1 {
+    font-size: 1.7em;
+}
+#deal-overview article p, .popover p {
+    margin: 0;
+}
+
+#deal-overview figure {
+    margin: 0;
+}
+#deal article {
+    padding: 50px 10px 30px 10px;
+}
+#deal p:last-child {
+    margin-bottom: 0;
+}
+/*popover*/
+.popover-content p {
+    margin-bottom: 20px;
+    color: #000;
+}
+.popover strong {
+    color: darkred;
+}
+
+.popover #close {
+    position: relative;
+    bottom: 5px;
+}
+.popover .form-control {
+    margin-bottom: 20px;
+}
+.popover .form-control:focus {
+    border-color: green;
+}
+.popover .form-control option:active{
+    border-color: green!important;
+}
+/*------------------- END DEAL.HTML -------------------*/
+
+/*-------------- ORGANIZATION.HTML AND COMPANY.HTML ------------*/
+body.customer-info {
+    margin-top: 53px;
+    min-height: 100%;
+}
+#enterprise {
+    padding-bottom: 60px;
+}
+#organization article, #enterprise article {
+    color: #666;
+}
+#organization {
+    padding: 0;
+}
+#organization > div, #enterprise {
+    background-color: #fff;
+    padding-top: 53px;
+}
+#organization figure {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    height: auto;
+    position: absolute;
+    bottom: 0;
+}
+#organization img {
+    display: inline-block;
+    width: 100%;
+}
+#organization a, #enterprise a {
+    color: darkred;
+    font-weight: bold;
+}
+#organization a.btn {
+    width: 400px;
+    font-weight: normal;
+    display: block;
+    margin: 0 auto;
+    border-color: darkred;
+    color: darkred;
+    transition: .3s ease-in-out;
+}
+#organization a.btn:hover {
+    background-color: darkred;
+    color: #fff;
+    transition: .3s ease-in-out;
+}
+#organization .feature .fa {
+    display: inline;
+    width: 30%;
+    color: darkred;
+    padding: 0 10px 50px 0;
+    font-size: 2.5em;
+}
+#organization h3, #organization h2, #enterprise h2 {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+#organization .feature div {
+    float: left;
+}
+
+#organization .feature div:last-child {
+    width: 70%;
+}
+#parallax {
+    background-color: rgba(0,0,0,0.4)!important;
+    color: #fff;
+    text-align: center;
+}
+#parallax h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+#organization li span {
+    position: relative;
+    bottom: 5px;
+}
+#organization > div:last-child figure {
+    position: static;
+}
+#organization > div:last-child img {
+    width: 85%;
+}
+
+#organization ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin-top: 30px;
+}
+#organization ul i {
+    color: darkred;
+    font-size: 30px;
+
+}
+#organization a[href*="itunes"] {
+    margin: 40px 0 20px 0;
+} 
+                         
+#organization a[href*="play"] {
+    margin: 0 0 20px 0;
+}
+#organization a[href*="itunes"] i, #organization a[href*="play"] i {
+    float: left;
+} 
+#organization a[href*="itunes"] span, #organization a[href*="play"] span {
+    position: relative;
+    top: 5px;
+}
+/*-------------- END ORGANIZATION.HTML AND COMPANY.HTML ------------*/
+
+/*-------------- CONTACT.HTML --------------*/
+#contact #form-wrapper {
+    padding: 100px 0;
+}
+#contact h1 {
+    color: #fff;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#contact #form-container {
+    padding:0;
+}
+#contact #contact-form {
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 3px;
+    padding: 20px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+#contact .form-control {
+    background-color: transparent;
+    border: 1px solid #fff;
+    color: #fff;
+    transition: .2s ease-in-out;
+}
+#contact .form-control:focus {
+    background-color: #fff;
+    color: #666;
+}
+#contact #contact-form button {
+    color: #fff;
+    border-color: #fff;
+    outline: none;
+    transition: .3s ease-in-out;
+}
+#contact #contact-form button:hover {
+    background-color:#fff;
+    color: #6f3333;
+}
+#contact ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #fff;
+}
+#contact ::-moz-placeholder { /* Firefox 19+ */
+  color: #fff;
+}
+#contact :-ms-input-placeholder { /* IE 10+ */
+  color: #fff;
+}
+#contact :-moz-placeholder { /* Firefox 18- */
+  color: #fff;
+}
+#contact .form-control:focus::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #666;
+}
+#contact .form-control:focus::-moz-placeholder { /* Firefox 19+ */
+  color: #666;
+}
+#contact .form-control:focus:-ms-input-placeholder { /* IE 10+ */
+  color: #666;
+}
+#contact .form-control:focus:-moz-placeholder { /* Firefox 18- */
+  color: #666;
+}
+/*-------------- END CONTACT.HTML --------------*/
+
+/*------------------ FAQ ---------------*/
+#faq {
+    padding: 30px 0;
+}
+#faq h3 {
+    font-size: 20px;
+}
+.faq-question {
+    font-weight: bold;
+}
+#faq h2, #faq h3 {
+    text-align: center;
+}
+#faq li {
+    margin: 10px 0;
+}
+/*------------------ END FAQ ---------------*/
+
+/*------------------- MOBILE ----------------------*/
 @media(max-width:767px) {
     /*HEADER*/
     #header {
@@ -376,10 +671,68 @@ body::-webkit-scrollbar {
        width: 98%;
        font-size: 10px;
     }
+    /*----------------- DEAL.HTML --------------*/
+    #deal-overview a.btn {
+        display: block;
+        margin: 30px auto 0 auto;
+        background-color: green;
+        color: #fff;
+    }
+    #deal-overview a.btn:hover {
+        background-color: green;
+    }
+    .popover {
+        left: 11%!important;
+    }
+    /*---------- ORGANIZATION.HTML ---------------*/
+    #organization figure {
+        width: 100%;
+    }
+    #organization img {
+        width: 100%;
+    }
+    #organization > div:last-child img {
+        width: 95%;
+        float: right;
+    }
+    #organization article div:last-child {
+        width: 80%;
+        float: right;
+    }
+    #organization a.btn {
+        width: 95%;
+        background-color: darkred;
+        color: #fff;
+    }
+    /*------------- CONTACT.HTML ------------------*/
+    #contact #form-wrapper {
+        padding: 0;
+    }
+    #contact #contact-form {
+        border-radius: 0;
+    }
+    #contact #contact-form button {
+        color: #6f3333;
+        background-color: #fff;
+        border-color: #fff;
+    }
+}
+
+@media(max-width:992px) {
+    #organization figure {
+        position: static;
+    }
 }
 
 @media(min-width:1920px) {
     #categories-filter-navigation ul, #btn-category-toggler {
         font-size: 20px;
+    }
+}
+
+@media(min-width:1921px) {
+    #organization img {
+        width: 500px;
+        float: right;
     }
 }

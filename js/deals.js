@@ -8,7 +8,7 @@ function fetchCategories() {
     for(var i = 0; i < data.length; i++) {
       categoryArr.push(data[i].name)
     }
-  })
+  });
 }
 //Functions for common tasks
 function latestDeals() {
@@ -62,9 +62,14 @@ $(function() {
     });
   });
 });
+
 fetchCategories();
-latestDeals();
-popularDeals();
+
+//setTimeout(function(){
+  latestDeals();
+  popularDeals();  
+//},200);
+
 
 //Search box 
 $( "#search" ).keyup(function() {

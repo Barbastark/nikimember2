@@ -193,7 +193,7 @@ function dealDetails(data, categoryArr) {
   var cashback = calcCashback(data,type)
   
   return '<div id="deal-overview" class="row">'+
-              '<div id="btn-back"><a href="index.html"><i class="fa fa-2x fa fa-angle-double-left"></i><span>Till alla erbjudanden</span></a></div>'+ 
+              '<div id="btn-back"><a href="index.html"><i class="fa fa-2x fa fa-angle-left"></i><span style="padding-left: 3px;">Visa alla erbjudanden</span></a></div>'+ 
             '<figure class="col-sm-6 wow fadeInLeft fadeIn" data-wow-duration="1s" data-wow-delay=".2s">'+
               '<img class="img-fluid" src="https://www.nikimember.se/images/' + data.image_ids[0] +  '"' + ' alt="deal image"/>'+
             '</figure>'+
