@@ -189,7 +189,7 @@ body::-webkit-scrollbar {
 }
 .filter-open {
     padding-top: 30px;
-    height: 440px;
+    height: 380px;
 }
 .filter, .filter-open {
     transition: all .5s ease-in-out;

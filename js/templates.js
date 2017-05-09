@@ -186,7 +186,7 @@ function deals(value, i, categoryArr) {
                 '<div style="float: left; width: 50%;">'+
                 '<p style="margin-bottom:0;">'+categoryArr[parseInt(value.category_id)-1]+'</p>'+
                 (value.publisher_name !== 0 ? '<p style="margin-bottom:0;">' + value.publisher_name + '</p>': '<p style="display: none;"></p>')+
-                (value.address !== undefined ? '<p style="margin-bottom:0;">' + value.address + '</p>': '<p style="display: none;"></p>')+
+                (value.address !== 0 ? '<p style="margin-bottom:0;">' + value.address + '</p>': '<p style="display: none;"></p>')+
                 (value.brand !== 0 ? '<p style="margin-bottom:0;">' + value.brand + '</p>': '<p style="display: none;"></p>')+
                 (value.purchases !== 0 ? '<p style="margin-bottom:0;">Antal köpta: ' + value.purchases + '</p>': '<p style="display: none;"></p>')+
                 '</div>'+

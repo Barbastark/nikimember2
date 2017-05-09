@@ -10,7 +10,7 @@
      
      lastScrollTop = st;
   }, false);
-
+   
   //Add remove class on mobile nav button
   $('#nav-icon').on('click', function(){
     if($( "#nav-icon" ).hasClass( "open" )) {
@@ -29,8 +29,8 @@
     }
   });
   
-  //Closes mobile sitenav when navlink is clicked
-  $(".nav-link-mobile").click(function() {
+  //Closes mobile sitenav when navlink or filter button is clicked
+  $(".nav-link-mobile, #btn-mobile-dropdown-toggle").click(function() {
     $("#nav-icon").removeClass('open');
     $(".navbar-toggleable-sm").collapse('hide');
   });
