@@ -167,7 +167,7 @@ body::-webkit-scrollbar {
 }
 #main .popover.bs-tether-element-attached-bottom::after,
 #main .popover.bs-tether-element-attached-bottom::before{
-    left: 87%;
+    left: 85%;
 }
 #main .popover h3 {
     background-color: #fff;
@@ -189,7 +189,7 @@ body::-webkit-scrollbar {
 }
 .filter-open {
     padding-top: 30px;
-    height: 360px;
+    height: 440px;
 }
 .filter, .filter-open {
     transition: all .5s ease-in-out;
@@ -370,6 +370,16 @@ body::-webkit-scrollbar {
 #deal p:last-child {
     margin-bottom: 0;
 }
+/*map*/
+#deal #map {
+    width: 400px;
+    height: 200px;
+    display: block;
+    border: 1px solid #999;
+    
+    margin-left: 5px;
+}
+
 /*popover*/
 .popover-content p {
     margin-bottom: 20px;
@@ -683,6 +693,11 @@ body.customer-info {
     }
     .popover {
         left: 11%!important;
+    }
+    #deal #map {
+        width: 99%;
+        height: 200px;
+        margin: 0 auto 10px auto;
     }
     /*---------- ORGANIZATION.HTML ---------------*/
     #organization figure {

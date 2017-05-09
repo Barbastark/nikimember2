@@ -1,14 +1,14 @@
 class Offer {
 
     constructor(token) {
-        this._baseUri  = "https://www.nikimember.se/api/v0.1";
+        this._baseUri  = "https://www.nikimember.se/api_dev/v0.1";
         this._offerUrl = "/offers";
         this._cardsUrl = "/cards";
         this._categoriesUrl = "/categories";
 
         this.resetQueryState();
     }
-
+//userId = 2
     resetQueryState()
     {
         this._queryState = {
@@ -55,7 +55,7 @@ class Offer {
         this._queryState.page = page;
     }
 
-    getCategories(callback){/*******/
+    getCategories(callback){
         this._request({
             url: this._getCategoriesUrl(),
             method: "GET",
@@ -133,6 +133,7 @@ class Offer {
                 iteration++;
             }
         });
+        str += '&flow=1';
         //console.log(str)
         return str;
     }
@@ -153,7 +154,7 @@ class Offer {
 
             },
             beforeSend: function(jqXHR){
-                var token = "YzAwNDVhZjYtODUyYS00ZGMwLWE4OTgtZjI5MTUxYjg5MTcw";
+                var token = "ZGNhOWNmNDctMzMwMi00ZTdhLThiOTQtZGQ5NTM2ZDMwNTk2";
                 token = btoa(token+':unused');
                 jqXHR.setRequestHeader('Authorization', 'Basic '+ token);
                 jqXHR.setRequestHeader('Nikimember-App-Version', "1.1.13");

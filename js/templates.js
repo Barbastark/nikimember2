@@ -1,3 +1,16 @@
+function initMap(lat,lng) {
+  setTimeout(function(){
+    var location = {lat: parseFloat(lat), lng: parseFloat(lng)};
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 12,
+      center: location
+    });
+    var marker = new google.maps.Marker({
+      position: location,
+      map: map
+    });
+  },1000)
+}
 function replaceNullValues(value) {
   for (var x in value ) {
     if(value[x] === null) {
@@ -113,7 +126,7 @@ $(document).on("click", "#btn-toggle-popup", function(){
   
   var dealId = $("#btn-toggle-popup").data("offerid")
   var button = $(this);
-  var userId = 793;
+  var userId = 2;
   var groupId = button.closest('.popover-content').find('select').val();
   var groupName = button.closest('.popover-content').find('select option:selected').text();
               
@@ -173,6 +186,7 @@ function deals(value, i, categoryArr) {
                 '<div style="float: left; width: 50%;">'+
                 '<p style="margin-bottom:0;">'+categoryArr[parseInt(value.category_id)-1]+'</p>'+
                 (value.publisher_name !== 0 ? '<p style="margin-bottom:0;">' + value.publisher_name + '</p>': '<p style="display: none;"></p>')+
+                (value.address !== undefined ? '<p style="margin-bottom:0;">' + value.address + '</p>': '<p style="display: none;"></p>')+
                 (value.brand !== 0 ? '<p style="margin-bottom:0;">' + value.brand + '</p>': '<p style="display: none;"></p>')+
                 (value.purchases !== 0 ? '<p style="margin-bottom:0;">Antal köpta: ' + value.purchases + '</p>': '<p style="display: none;"></p>')+
                 '</div>'+
@@ -187,11 +201,19 @@ function deals(value, i, categoryArr) {
 }
 
 function dealDetails(data, categoryArr) {
+    
   data = replaceNullValues(data)
   var type = getType(data) 
   var grant = calcGrant(data,type) 
   var cashback = calcCashback(data,type)
-  
+  var isMap = false;
+
+  if(data.latitude && data.longitude) {
+    isMap = true;
+    var lat = data.latitude
+    var lng = parseInt(data.longitude);
+    initMap(lat,lng)
+  }
   return '<div id="deal-overview" class="row">'+
               '<div id="btn-back"><a href="index.html"><i class="fa fa-2x fa fa-angle-left"></i><span style="padding-left: 3px;">Visa alla erbjudanden</span></a></div>'+ 
             '<figure class="col-sm-6 wow fadeInLeft fadeIn" data-wow-duration="1s" data-wow-delay=".2s">'+
@@ -205,18 +227,22 @@ function dealDetails(data, categoryArr) {
               (formatPriceAndCashback(data, cashback)) +
                '<h2>Föreningsbidrag</h2><p class="contribution">' + grant + '</p>' +
                (data.purchases !== 0 ? '<h2>Antal köpta</h2>' + '<p>'+data.purchases + 'st</p>': '<p style="display: none;"></p>')+
+               (data.purchase_conditions ? '<h2>Villkor</h2><p>' + data.purchase_conditions + '</p>' : '<h2 style="display: none;"></h2>') +
+               (data.valid_to ? '<h2>Giltigt till</h2><p>' + data.valid_to.substring(0,10) + '</p>' : '<h2 style="display: none;"></h2>') +
                (data._type !== "offers_adtraction" ? '<button id="btn-activate" class="btn btn-outline-primary style="visibility:hidden;">Till Erbjudandet</button>':'<button type="button" id="btn-activate" class="btn btn-outline-primary" data-userid="793">Till Erbjudandet</button>') +
-               
             '</section>'+
           '</div>'+
           '<div class="row">'+
-            '<article class="wow fadeInUp" data-wow-duration="1s" data-wow-delay=".2s">'+
+            '<article class="wow fadeInUp clearfix" data-wow-duration="1s" data-wow-delay=".2s">'+
+                      
             '<h1>' + data.title + '</h1>'+
+            (isMap ? '<div id="map" class="float-sm-right"></div>':'<div id="map" style="visibility: hidden; height:0; width: 0;"></div>') +
               '<p>'+ 
                 data.text +
               '</p>'+
             '</article>'+
           '</div>'
+          
 }
 
 function carouselItem(className, img, data) {

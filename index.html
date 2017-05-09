@@ -12,13 +12,15 @@
 	<!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
 	  <link href='https://fonts.googleapis.com/css?family=Alegreya+Sans:400,500,700' rel='stylesheet' type='text/css'> 
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/hamburger-icon.css">
     <link rel="stylesheet" href="font-awesome/css/font-awesome.css">
     <link rel="stylesheet" href="css/animate.min.css">
+
+  <!--Custom CSS-->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/hamburger-icon.css">
   </head>
-  <body id="main" class="wow fadeIn animated" data-wow-delay="0.5s" data-wow-duration="1s">
-    <!-- SITE NAVIGATION -->
+  <body id="main">
+  <!-- SITE NAVIGATION -->
     <nav id="site-nav" class="navbar navbar-fixed-top">
 	    <button id="nav-icon" class="navbar-toggler float-xs-left hidden-md-up" data-toggle="collapse" data-target="#navigation">
         <span></span>
@@ -158,14 +160,18 @@
               <a data-id="9" class="dropdown-item category-search" href="#latest-deals">Resor & Hotel</a>
               <a data-id="10" class="dropdown-item category-search" href="#latest-deals">Restaurang, Mat & Dryck</a>
               <a data-id="11" class="dropdown-item category-search" href="#latest-deals">Sport, Hobby & Lek</a>
+              <!--<a data-id="12" class="dropdown-item category-search" href="#latest-deals">Favoriter</a>
+              <a data-id="13" class="dropdown-item category-search" href="#latest-deals">Populära Erbjudanden</a>
+              <a data-id="14" class="dropdown-item category-search" href="#latest-deals">Utvalda</a>
+              <a data-id="15" class="dropdown-item category-search" href="#latest-deals">Tidsbegränsade</a>-->
             </div>
             <div class="col-md-6 col-lg-3 offset-lg-1 list-group">
-              <a class="dropdown-item popular-search" href="#latest-deals-container">Mat</a>
-              <a class="dropdown-item popular-search" href="#latest-deals-container">Sport</a>
-              <a class="dropdown-item popular-search" href="#latest-deals-container">Kläder</a>
-              <a class="dropdown-item popular-search" href="#latest-deals-container">Musik</a>
-              <a class="dropdown-item popular-search" href="#latest-deals-container">Skönhetsprodukter</a>
-              <a class="dropdown-item popular-search" href="#latest-deals-container">Fallskärmshoppning</a>
+              <a class="dropdown-item popular-search" href="#latest-deals-container">Hoverboard</a>
+              <a class="dropdown-item popular-search" href="#latest-deals-container">Drönare</a>
+              <a class="dropdown-item popular-search" href="#latest-deals-container">Vinterjacka</a>
+              <a class="dropdown-item popular-search" href="#latest-deals-container">Bok</a>
+              <a class="dropdown-item popular-search" href="#latest-deals-container">Headset</a>
+              <a class="dropdown-item popular-search" href="#latest-deals-container">Star Wars</a>
               <a class="dropdown-item popular-search" href="#latest-deals-container">Skor</a>
               <a class="dropdown-item popular-search" href="#latest-deals-container">Resor</a>
               <a class="dropdown-item popular-search" href="#latest-deals-container">Restaurang</a>
@@ -189,7 +195,7 @@
     
     <!-- DEALS -->
     <section id="latest-deals" class="deals container"></section>
-    <section id="popular-deals" class="deals container"></section>
+    <!--<section id="popular-deals" class="deals container"></section>-->
     <!-- END DEALS -->
 
     <!-- FOOTER -->
@@ -252,7 +258,7 @@
       setTimeout(function(){
         var x = user_data.getUserId();
         console.log(x)
-      },500)
+      },2000)
       
       $(document).ready(function(){
         $('[data-toggle="tooltip"]').tooltip()
@@ -263,7 +269,7 @@
                 html: true,
                 title : 'Visa fler kategorier', 
                 trigger: 'hover',
-                offset: '0 60px',
+                offset: '0 50px',
                 container: 'body'
              });
         setTimeout(function(){
