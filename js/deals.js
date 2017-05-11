@@ -74,8 +74,7 @@ $( "#search" ).keyup(function() {
   
   var value = $('#search').val()
   var text = $('#latest-deals-header').html()
-  //console.log('tar bort')
-
+  
   $('#latest-deals-container, #popular-deals, #popular-deals-container').empty()
 
   offer.setResults(null);
@@ -102,6 +101,36 @@ $( "#search" ).keyup(function() {
     }
   });
 });
+
+
+
+
+//Search groups
+$( document ).on("keyup", "#search-groups", function() {
+  var groupListContainer = $(this).closest('.popover-content').find('#group-list');
+  var value = $(this).val()
+  groupListContainer.empty()
+  if(value.length !== 0) {
+     offer.searchGroups(value,function(data) {
+
+     $.each(data, function(key, value){
+       groupListContainer.append(groupList(value))
+     });
+   });
+  } else {
+      var groups = offer.getMemberGroups(2, function(data) {
+      $.each(data, function(key, value){
+        groupListContainer.append(groupList(value))
+      })
+    });
+  }
+});
+
+
+
+
+
+
 
 
 

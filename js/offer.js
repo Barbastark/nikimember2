@@ -4,11 +4,12 @@ class Offer {
         this._baseUri  = "https://www.nikimember.se/api_dev/v0.1";
         this._offerUrl = "/offers";
         this._cardsUrl = "/cards";
+        this._groupsUrl = "/groups";
         this._categoriesUrl = "/categories";
 
         this.resetQueryState();
     }
-//userId = 2
+
     resetQueryState()
     {
         this._queryState = {
@@ -64,17 +65,17 @@ class Offer {
         },callback)
     }
 
-    getMemberCard(userId, callback){// 1:a anrop
+    getMemberCard(userId, callback){
 
         this._request({
-            url: this._getCardsUrl()+"/"+userId, //1:1
+            url: this._getCardsUrl()+"/"+userId, 
             method: "GET",
             data: [],
             ifModifiedSince: null
         },callback)
     }
 
-    getMemberGroups(userId, callback){// 1:a anrop
+    getMemberGroups(userId, callback){
         var params = {
             filter: '"user_id='+userId+'"',
             embeds: "groups"
@@ -96,12 +97,26 @@ class Offer {
             }
         });
         this._request({
-            url: this._getCardsUrl()+str, //1:1
+            url: this._getCardsUrl()+str, 
             method: "GET",
             data: [],
             ifModifiedSince: null
         },function(data, embedded){
             callback(embedded);
+        })
+    }
+
+    searchGroups(searchStr,callback){
+
+        var str = "?filter="+encodeURI('"name=%'+searchStr+'%&type=ASSOCIATION"');
+
+        this._request({
+            url: this._getGroupsUrl()+str, 
+            method: "GET",
+            data: [],
+            ifModifiedSince: null
+        },function(data, embedded){
+            callback(data);
         })
     }
 
@@ -134,11 +149,10 @@ class Offer {
             }
         });
         str += '&flow=1';
-        //console.log(str)
         return str;
     }
 
-    _request(options, callback){ // 2:a 
+    _request(options, callback){  
         var that = this;
         if(!options.data){
             options.data = [];
@@ -170,19 +184,21 @@ class Offer {
         return this._baseUri+this._cardsUrl;
     }
 
+    _getGroupsUrl(){
+        return this._baseUri+this._groupsUrl;
+    }
+
     _getBaseUrl(){
         return this._baseUri+this._offerUrl; 
     }
 
-    _handleResponse(data, callback){ // 3:e anrop
+    _handleResponse(data, callback){ 
         var embedded = false;
         if(data.embedded !== undefined){
             embedded = data.embedded;
         }
 
         data = data.data;
-        console.log(data)
         callback(data, embedded);
-        
     }
 }

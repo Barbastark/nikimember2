@@ -34,7 +34,7 @@
 	    <script src="js/user_data.js"></script>
 	    <script src="js/offer.js"></script>
 	    <script src="js/templates.js"></script>
-	    <script src="js/deals.js"></script>
+	    
 	    <script>
 			$(document).ready(function() {
 			  var id = window.location.hash;
@@ -45,17 +45,18 @@
 			offer.getOne(id, function(data) {
 		      $('#site-wrapper').append(dealDetails(data, categoryArr));
 		      $('[data-toggle="tooltip"]').tooltip()
-		      $('[data-toggle="popover"]').popover()
-		      $('#btn-activate').on('click', function() {
-
+		      //$('[data-toggle="popover"]').popover()
+		      $('.popover').popover({
+  				  container: 'body'
+  				})
 			  if(loggedIn) {
-		      	$('#btn-toggle-popup').data('offerid', data.id)
-		      	$('#btn-toggle-popup').data('groupid', data.group_id)
-		      	$('#btn-toggle-popup').data('groupname', data.name)
-	
+			  	var id = data.id;
+
 		      	var groups = offer.getMemberGroups(2, function(data) {
+		      		$('#group-list').append(groupList({id: null, name: 'Välj Senare'},id))
+
 			  	  $.each(data, function(key, value){
-			  	  	$('#group-list').append(groupList(value))
+			  	  	$('#group-list').append(groupList(value, id))
 			  	  })
 			  	  $("#btn-activate").popover({
 			  		  placement: 'top',
@@ -65,23 +66,26 @@
 			  	      content : $("#popover-content").html(),
 			  	      trigger: 'click'
 			  	   });
-			 	  });
+			  	  });
 				 } else {
 			     	window.location.href = "https://www.nikimember.se/signup";
  			     }
-				});		
-		  	  });
+			  });
 			});
 		</script>
 		<!-- Google Maps -->
 		<script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTp1jQMhjgncDtAtQd8w1Lc6IXDo6Slog&callback=initMap"></script>
 
-		<div id="popover-content" style="display:none;">
-		<p>Välj vilken förening du vill stödja</p>
-		<select id="group-list" class="form-control">
-		</select>
-		<button id="btn-toggle-popup" class="btn btn-primary btn-to-deal">Till webshopen</button>
+		<div id="popover-content" style="display: none;">
+			<p>Välj vilken förening du vill stödja</p>
+			<div class="form-group">
+    			<input type="text" class="form-control" id="search-groups" placeholder="sök grupp">
+ 			</div>
+			<div id="group-list">
+				<!--<button class="btn-support-group btn-primary" data-deal-id="">Välj Senare</button>-->
+			</div>
 		</div>
+		<script src="js/deals.js"></script>
 	</body>
 </html>
 

@@ -122,19 +122,18 @@ function calcCashback(value, type) {
   }
 }
 
-$(document).on("click", "#btn-toggle-popup", function(){
+$(document).on("click", ".btn-support-group", function(){
   
-  var dealId = $("#btn-toggle-popup").data("offerid")
   var button = $(this);
   var userId = 2;
-  var groupId = button.closest('.popover-content').find('select').val();
-  var groupName = button.closest('.popover-content').find('select option:selected').text();
-              
+  var dealId = button.attr("data-deal-id")
+  var groupId = button.attr("data-group-id"); //skicka null istället
+  var groupName = button.text();
   var data = {user_cashback_group_id: parseInt(groupId), user_cashback_group_name: groupName};
   
   $.ajax({
       type: 'POST',
-      url: "https://www.nikimember.se/api/v0.1/offers/" + dealId + "/activate",
+      url: "https://www.nikimember.se/api_dev/v0.1/offers/" + dealId + "/activate",
       data: JSON.stringify(data),
       contentType: "application/json; charset=utf-8",
       success: function(d){
@@ -144,7 +143,7 @@ $(document).on("click", "#btn-toggle-popup", function(){
           alert("something went wrong")
       },
       beforeSend: function(jqXHR){
-          var token = "ZTg4ZWIyMmUtNzA4Yi00OGE2LTk2ODYtMjJlMmNlZTkxNDM5";
+          var token = "ZGNhOWNmNDctMzMwMi00ZTdhLThiOTQtZGQ5NTM2ZDMwNTk2";
           token = btoa(token+':unused');
           jqXHR.setRequestHeader('Authorization', 'Basic '+ token);
           jqXHR.setRequestHeader('Nikimember-App-Version', "1.1.13");
@@ -152,7 +151,8 @@ $(document).on("click", "#btn-toggle-popup", function(){
   })
 });
 
-$('#btn-activate').popover('show') 
+$('#btn-activate').popover('show')
+
 function dealContainer(name, id) {
   return'<div class="row">'+
           '<div class="col-xs-12">'+
@@ -185,10 +185,10 @@ function deals(value, i, categoryArr) {
                 '<h2>'+value.title+'</h2>' +
                 '<div style="float: left; width: 50%;">'+
                 '<p style="margin-bottom:0;">'+categoryArr[parseInt(value.category_id)-1]+'</p>'+
-                (value.publisher_name !== 0 ? '<p style="margin-bottom:0;">' + value.publisher_name + '</p>': '<p style="display: none;"></p>')+
-                (value.address !== 0 ? '<p style="margin-bottom:0;">' + value.address + '</p>': '<p style="display: none;"></p>')+
-                (value.brand !== 0 ? '<p style="margin-bottom:0;">' + value.brand + '</p>': '<p style="display: none;"></p>')+
-                (value.purchases !== 0 ? '<p style="margin-bottom:0;">Antal köpta: ' + value.purchases + '</p>': '<p style="display: none;"></p>')+
+                (value.publisher_name !== 0 && value.publisher_name !== undefined ? '<p style="margin-bottom:0;">' + value.publisher_name + '</p>': '<p style="display: none;"></p>')+
+                (value.address !== 0 && value.address !== undefined? '<p style="margin-bottom:0;">' + value.address + '</p>': '<p style="display: none;"></p>')+
+                (value.brand !== 0 && value.brand !== undefined? '<p style="margin-bottom:0;">' + value.brand + '</p>': '<p style="display: none;"></p>')+
+                (value.purchases !== 0 && value.purchases !== undefined ? '<p style="margin-bottom:0;">Antal köpta: ' + value.purchases + '</p>': '<p style="display: none;"></p>')+
                 '</div>'+
                 '<div style="float: left; width: 50%;">'+
                 (value.original_price > value.price ? '<p class="original-price" style="text-decoration:line-through;">' + value.original_price + 'kr</p>' : '<p class="original-price" style="visibility: hidden"><strike>' + value.original_price + 'kr</strike></p>' )+
@@ -242,7 +242,6 @@ function dealDetails(data, categoryArr) {
               '</p>'+
             '</article>'+
           '</div>'
-          
 }
 
 function carouselItem(className, img, data) {
@@ -254,7 +253,7 @@ function carouselItem(className, img, data) {
           '</div>'
 }
 
-function groupList(groups) {
-  return '<option value="'+ groups.id + '">' + groups.name + '</option>'
+function groupList(groups, id) {
+  return '<button class="btn-support-group btn-primary" data-deal-id="'+id+'" data-group-id="'+ groups.id+'">' + groups.name + '</button>'
 }
 
