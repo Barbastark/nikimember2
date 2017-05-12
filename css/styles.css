@@ -381,6 +381,9 @@ body::-webkit-scrollbar {
 }
 
 /*popover*/
+#deal .popover {
+    height: 335px;
+}
 .popover-content p {
     margin-bottom: 20px;
     color: #000;
