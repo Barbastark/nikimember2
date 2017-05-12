@@ -719,6 +719,19 @@ body.customer-info {
         height: 200px;
         margin: 0 auto 10px auto;
     }
+    #btn-activate {
+        width: 98%;
+        display:block;
+        margin: 0 auto!important;
+    }
+    .popover {
+        width: 90%!important;
+        left: 0!important;
+        right: 10%!important;
+        margin: auto!important;
+        max-width: none;
+        top: -10px!important;
+    }
     /*---------- ORGANIZATION.HTML ---------------*/
     #organization figure {
         width: 100%;
