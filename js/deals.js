@@ -1,16 +1,7 @@
 
 var offer = new Offer();
 
-//Hämtar kategorier
-var categoryArr = []
-function fetchCategories() {
-  offer.getCategories(function(data){
-    for(var i = 0; i < data.length; i++) {
-      categoryArr.push(data[i].name)
-    }
-  });
-  latestDeals();
-}
+
 //Functions for common tasks
 function latestDeals() {
   var i = 0.2;
@@ -64,7 +55,7 @@ $(function() {
   });
 });
 
-fetchCategories();
+latestDeals();
 
 //popularDeals();  
 
@@ -125,11 +116,6 @@ $( document ).on("keyup", "#search-groups", function() {
     });
   }
 });
-
-
-
-
-
 
 
 

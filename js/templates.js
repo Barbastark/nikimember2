@@ -1,3 +1,16 @@
+var categoryArr = [
+  "Bil, Båt & Motor",
+  "Bygg & Byggmaterial",
+  "Bank & Försäkring",
+  "Hem & Inredning",
+  "Media & Elektronik",
+  "Hälsa & Sjukvård",
+  "Kultur, Nöjen & Evenemang",
+  "Mode & Skönhet",
+  "Resor & Hotel",
+  "Restaurang, Mat & Dryck",
+  "Sport, Hobby & Lek"
+]
 function initMap(lat,lng) {
   setTimeout(function(){
     var location = {lat: parseFloat(lat), lng: parseFloat(lng)};
@@ -123,31 +136,41 @@ function calcCashback(value, type) {
 }
 
 $(document).on("click", ".btn-support-group", function(){
-  
+  var target= '_blank'
   var button = $(this);
   var userId = 2;
   var dealId = button.attr("data-deal-id")
   var groupId = button.attr("data-group-id"); //skicka null istället
   var groupName = button.text();
   var data = {user_cashback_group_id: parseInt(groupId), user_cashback_group_name: groupName};
-  
-  $.ajax({
-      type: 'POST',
-      url: "https://www.nikimember.se/api_dev/v0.1/offers/" + dealId + "/activate",
-      data: JSON.stringify(data),
-      contentType: "application/json; charset=utf-8",
-      success: function(d){
-          window.location = d.data.tracking_url;
-      },
-      error: function(){
-          alert("something went wrong")
-      },
-      beforeSend: function(jqXHR){
-          var token = "ZGNhOWNmNDctMzMwMi00ZTdhLThiOTQtZGQ5NTM2ZDMwNTk2";
-          token = btoa(token+':unused');
-          jqXHR.setRequestHeader('Authorization', 'Basic '+ token);
-          jqXHR.setRequestHeader('Nikimember-App-Version', "1.1.13");
+ /* alert(dealId)
+  alert(groupId)
+  alert(groupName)*/
+  function confirm() {
+        
       }
+  $.ajax({
+    type: 'POST',
+    url: 'https://www.nikimember.se/api_dev/v0.1/offers/' + dealId + '/activate',
+    data: JSON.stringify(data),
+    contentType: "application/json; charset=utf-8",
+    success: function(d){
+      if(!status) {
+        $('.btn-support-group, #search-groups, .popover p').remove();
+        $('.popover').append('<a id="confirm-redirect" class="btn btn-danger" href="' + d.data.tracking_url +'" target="_blank">Vidare till erbjudandet</a>')
+      } else {
+        window.open(d.data.tracking_url,target);
+      }
+    },
+    error: function(){
+      alert("something went wrong")
+    },
+    beforeSend: function(jqXHR){
+      var token = "ZGNhOWNmNDctMzMwMi00ZTdhLThiOTQtZGQ5NTM2ZDMwNTk2";
+      token = btoa(token+':unused');
+      jqXHR.setRequestHeader('Authorization', 'Basic '+ token);
+      jqXHR.setRequestHeader('Nikimember-App-Version', "1.1.13");
+    }
   })
 });
 
@@ -174,7 +197,7 @@ function deals(value, i, categoryArr) {
   var grant = calcGrant(value,type) 
   var cashback = calcCashback(value,type)
   
-  return '<div class="card-container col-md-6 col-lg-3 ">'+
+  return '<div class="card-container">'+
             '<article id="'+value.id+'" class="card deal-card wow fadeIn" data-wow-delay="' + i + 's">'+
               '<figure class="deal-image-container">'+
               '<a href="deal.html#'+value.id+'">'+ 
