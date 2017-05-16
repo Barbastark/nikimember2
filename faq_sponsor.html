@@ -190,7 +190,7 @@
                         </li>
 
                     </ul>
-                    <p>Fler frågor som ni behöver svar på för att gå vidare? Kontakta oss så ska vi göra vårt bästa för att svara på dem. <a href="https://www.nikimember.se/#footer">Kontakta oss här.</a></p>
+                    <p>Fler frågor som ni behöver svar på för att gå vidare? Kontakta oss så ska vi göra vårt bästa för att svara på dem. <a href="contact.html">Kontakta oss här.</a></p>
           </div>
         </div>
       </div> 
@@ -242,10 +242,15 @@
     <script> new WOW().init(); </script>
 
     <!-- Custom Scripts -->
+    <script src="js/user_data.js"></script>
     <script src="js/offer.js"></script>
     <script src="js/templates.js"></script>
     <script src="js/deals.js"></script>
     <script src="js/animations.js"></script>
+    <script>
+      var data = new userData();
+      data.setUserId();
+    </script>
   </body>
 </html>
 

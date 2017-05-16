@@ -272,7 +272,7 @@ function dealDetails(data, categoryArr) {
             '</figure>'+
             '<section class="col-sm-6 wow fadeInRight" data-wow-duration="1s" data-wow-delay=".2s">'+
               '<h1>' + data.title + '</h1>'+
-              '<h2 style="margin-bottom: 10px; font-size: 18px;">'+categoryArr[parseInt(data.category_id)-1]+'</h2>'+
+              '<h2 style="margin-bottom: 20px; font-size: 18px;">'+categoryArr[parseInt(data.category_id)-1]+'</h2>'+
 
               (data.brand !== 0 ? '<h2>' + data.brand + '</h2>': '<h2 style="display: none;"></h2>')+
 

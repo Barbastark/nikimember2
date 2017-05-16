@@ -3,12 +3,11 @@
   let siteNav = document.querySelector('#site-nav');
 
    window.addEventListener("scroll", () => { 
-
-     let st = window.pageYOffset || document.documentElement.scrollTop; 
-
-     st > lastScrollTop ? siteNav.classList.add('sitenav-hidden') : siteNav.classList.remove('sitenav-hidden')
-     
-     lastScrollTop = st;
+    if(window.pageYOffset > 200) {
+      let st = window.pageYOffset || document.documentElement.scrollTop; 
+      st > lastScrollTop ? siteNav.classList.add('sitenav-hidden') : siteNav.classList.remove('sitenav-hidden')
+      lastScrollTop = st;
+    }
   }, false);
    
   //Add remove class on mobile nav button

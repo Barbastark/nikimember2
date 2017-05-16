@@ -778,7 +778,19 @@ body.customer-info {
         border-color: #fff;
     }
 }
+@media(min-width:575px) {
+     #header .header-slide-container img {
+        margin-top: 73px ;
+        margin-bottom: 20px;
+    }
+}
 @media(min-width:768px) {
+    #header .header-slide-container img {
+        margin-top: 75px;
+        margin-bottom: 0;
+        width: 50%;
+        height: auto;
+    }
     .card-container {
         width: 48%;
         display: inline-block;
