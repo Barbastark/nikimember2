@@ -18,8 +18,9 @@
   <!--Custom CSS-->
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/hamburger-icon.css">
+
   </head>
-  <body id="main">
+  <body id="main" class="wow fadeIn animated" data-wow-delay="0.2s" data-wow-duration="1s">
   <!-- SITE NAVIGATION -->
     <nav id="site-nav" class="navbar navbar-fixed-top">
 	    <button id="nav-icon" class="navbar-toggler float-xs-left hidden-md-up" data-toggle="collapse" data-target="#navigation">
@@ -157,10 +158,6 @@
               <a data-id="9" class="dropdown-item category-search" href="#latest-deals">Resor & Hotel</a>
               <a data-id="10" class="dropdown-item category-search" href="#latest-deals">Restaurang, Mat & Dryck</a>
               <a data-id="11" class="dropdown-item category-search" href="#latest-deals">Sport, Hobby & Lek</a>
-              <!--<a data-id="12" class="dropdown-item category-search" href="#latest-deals">Favoriter</a>
-              <a data-id="13" class="dropdown-item category-search" href="#latest-deals">Populära Erbjudanden</a>
-              <a data-id="14" class="dropdown-item category-search" href="#latest-deals">Utvalda</a>
-              <a data-id="15" class="dropdown-item category-search" href="#latest-deals">Tidsbegränsade</a>-->
             </div>
             <div class="col-md-6 col-lg-3 offset-lg-1 list-group">
               <a class="dropdown-item popular-search" href="#latest-deals-container">Hoverboard</a>
@@ -247,6 +244,7 @@
     <script src="js/templates.js"></script>
     <script src="js/deals.js"></script>
     <script src="js/animations.js"></script>
+    
     <script>
       var user_data = new userData();
       user_data.setUserId();
