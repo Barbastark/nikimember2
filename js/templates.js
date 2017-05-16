@@ -1,3 +1,4 @@
+//Kategorier
 var categoryArr = [
   "Bil, Båt & Motor",
   "Bygg & Byggmaterial",
@@ -11,6 +12,7 @@ var categoryArr = [
   "Restaurang, Mat & Dryck",
   "Sport, Hobby & Lek"
 ]
+//Google Maps
 function initMap(lat,lng) {
   setTimeout(function(){
     var location = {lat: parseFloat(lat), lng: parseFloat(lng)};
@@ -63,15 +65,33 @@ function getType(value) {
 function formatPriceAndCashback(value, cashback) {
   var main = document.getElementById('main')
   var deal = document.getElementById('deal')
-   
-  
+   //type === adtraction_program
+  //console.log(value)
   if(value.price === 0) {
+
+
     if(main !== null) {
-      return '<p class="price-tag">Gratis</p>'+ (cashback === false ? '<p class="cashback" style="visibility:hidden;"><span>Din Cashback:</span></p>':'<p class="cashback"><span>Din Cashback: </span>' + cashback + '</p>') 
+      if(value.adtraction_type === "PROGRAM") {
+         return '<p class="price-tag" style="visibility: hidden;">Gratis</p>'+ (cashback === false ? '<p class="cashback" style="visibility:hidden;">'+
+                '<span>Din Cashback:</span></p>':'<p class="cashback"><span>Din Cashback: </span>' + cashback + '</p>')
+      } else {
+         return '<p class="price-tag">Gratis</p>'+ (cashback === false ? '<p class="cashback" style="visibility:hidden;">'+
+                '<span>Din Cashback:</span></p>':'<p class="cashback"><span>Din Cashback: </span>' + cashback + '</p>') 
       }
+    } 
+
+
     if(deal !== null) {
-      return '<h2>Pris</h2><p class="price-tag">Gratis</p>'+ (cashback === false ? '<h2 style="display: none;">Din Cashback</h2><p class="cashback" style="display: none;"></p>':'<h2>Din Cashback</h2><p class="cashback">'+ cashback + '</p>')
+      if(value.adtraction_type === "PROGRAM"){
+        return '<h2 style="display:none;">Pris</h2><p class="price-tag" style="display:none;">Gratis</p>'+ (cashback === false ? '<h2 style="display: none;">Din Cashback</h2>'+
+             '<p class="cashback" style="display: none;"></p>':'<h2>Din Cashback</h2><p class="cashback">'+ cashback + '</p>')
+      } else {
+        return '<h2>Pris</h2><p class="price-tag">Gratis</p>'+ (cashback === false ? '<h2 style="display: none;">Din Cashback</h2>'+
+               '<p class="cashback" style="display: none;"></p>':'<h2>Din Cashback</h2><p class="cashback">'+ cashback + '</p>')
+        }
       }
+
+
     } else if(value.price < 0) {
         if(main !== null) {
           return '<p class="price-tag" style="visibility:hidden">Gratis</p><p class="cashback" style="color: red"><span>Rabatt:' + cashback + 'kr</p>'
@@ -81,10 +101,12 @@ function formatPriceAndCashback(value, cashback) {
         }
     } else {
         if(main !== null) {
-          return '<p class="price-tag">' + value.price + 'kr</p>' +  (cashback === false ? '<p class="cashback" style="visibility:hidden;"><span>Din Cashback:</span> ' + cashback + '</p>' :'<p class="cashback"><span>Din Cashback:</span> ' + cashback + '</p>')
+          return '<p class="price-tag">' + value.price + 'kr</p>' +  (cashback === false ? '<p class="cashback" style="visibility:hidden;">'+
+                 '<span>Din Cashback:</span> ' + cashback + '</p>' :'<p class="cashback"><span>Din Cashback:</span> ' + cashback + '</p>')
         }
         if(deal !== null) {
-          return '<h2>Pris</h2><p class="price-tag">'+value.price+'kr</p>'+(cashback === false ? '<h2 style="display: none;">Din Cashback</h2><p class="cashback" style="display:none;">'+ cashback + '</p>':'<h2>Din Cashback</h2><p class="cashback">'+ cashback + '</p>')
+          return '<h2>Pris</h2><p class="price-tag">'+value.price+'kr</p>'+(cashback === false ? '<h2 style="display: none;">Din Cashback</h2>'+
+                 '<p class="cashback" style="display:none;">'+ cashback + '</p>':'<h2>Din Cashback</h2><p class="cashback">'+ cashback + '</p>')
         }
     }
 } 
@@ -143,12 +165,7 @@ $(document).on("click", ".btn-support-group", function(){
   var groupId = button.attr("data-group-id"); //skicka null istället
   var groupName = button.text();
   var data = {user_cashback_group_id: parseInt(groupId), user_cashback_group_name: groupName};
- /* alert(dealId)
-  alert(groupId)
-  alert(groupName)*/
-  function confirm() {
-        
-      }
+  
   $.ajax({
     type: 'POST',
     url: 'https://www.nikimember.se/api_dev/v0.1/offers/' + dealId + '/activate',
@@ -208,13 +225,24 @@ function deals(value, i, categoryArr) {
                 '<h2>'+value.title+'</h2>' +
                 '<div style="float: left; width: 50%;">'+
                 '<p style="margin-bottom:0;">'+categoryArr[parseInt(value.category_id)-1]+'</p>'+
-                (value.publisher_name !== 0 && value.publisher_name !== undefined ? '<p style="margin-bottom:0;">' + value.publisher_name + '</p>': '<p style="display: none;"></p>')+
-                (value.address !== 0 && value.address !== undefined? '<p style="margin-bottom:0;">' + value.address + '</p>': '<p style="display: none;"></p>')+
-                (value.brand !== 0 && value.brand !== undefined? '<p style="margin-bottom:0;">' + value.brand + '</p>': '<p style="display: none;"></p>')+
-                (value.purchases !== 0 && value.purchases !== undefined ? '<p style="margin-bottom:0;">Antal köpta: ' + value.purchases + '</p>': '<p style="display: none;"></p>')+
+
+                (value.publisher_name !== 0 && value.publisher_name !== undefined ? '<p style="margin-bottom:0;">' + value.publisher_name + 
+                '</p>': '<p style="display: none;"></p>')+
+
+                (value.address !== 0 && value.address !== undefined? '<p style="margin-bottom:0;">' + value.address + 
+                '</p>': '<p style="display: none;"></p>')+
+
+                (value.brand !== 0 && value.brand !== undefined? '<p style="margin-bottom:0;">'+ value.brand + '</p>': '<p style="display: none;"></p>')+
+
+                (value.purchases !== 0 && value.purchases !== undefined ? '<p style="margin-bottom:0;">Antal köpta: ' + 
+                 value.purchases + '</p>': '<p style="display: none;"></p>')+
+
                 '</div>'+
                 '<div style="float: left; width: 50%;">'+
-                (value.original_price > value.price ? '<p class="original-price" style="text-decoration:line-through;">' + value.original_price + 'kr</p>' : '<p class="original-price" style="visibility: hidden"><strike>' + value.original_price + 'kr</strike></p>' )+
+
+                (value.original_price > value.price ? '<p class="original-price" style="text-decoration:line-through;">' + value.original_price + 
+
+                 'kr</p>' : '<p class="original-price" style="visibility: hidden"><strike>' + value.original_price + 'kr</strike></p>' )+
                 (formatPriceAndCashback(value, cashback))+
                 '<p class="contribution"><span>Föreningsbidrag:</span> ' + grant + '</p>'+
                 '</div>'+
@@ -245,14 +273,25 @@ function dealDetails(data, categoryArr) {
             '<section class="col-sm-6 wow fadeInRight" data-wow-duration="1s" data-wow-delay=".2s">'+
               '<h1>' + data.title + '</h1>'+
               '<h2 style="margin-bottom: 10px; font-size: 18px;">'+categoryArr[parseInt(data.category_id)-1]+'</h2>'+
+
               (data.brand !== 0 ? '<h2>' + data.brand + '</h2>': '<h2 style="display: none;"></h2>')+
-              (data.original_price > data.price ? '<h2>Originalpris</h2><p class="original-price" style="text-decoration:line-through;">' + data.original_price + 'kr</p>' : '<h2 style="display: none;"></h2>')+ 
+
+              (data.original_price > data.price ? '<h2>Originalpris</h2><p class="original-price" style="text-decoration:line-through;">'+ 
+               data.original_price + 'kr</p>' : '<h2 style="display: none;"></h2>')+ 
+
               (formatPriceAndCashback(data, cashback)) +
+
                '<h2>Föreningsbidrag</h2><p class="contribution">' + grant + '</p>' +
+
                (data.purchases !== 0 ? '<h2>Antal köpta</h2>' + '<p>'+data.purchases + 'st</p>': '<p style="display: none;"></p>')+
+
                (data.purchase_conditions ? '<h2>Villkor</h2><p>' + data.purchase_conditions + '</p>' : '<h2 style="display: none;"></h2>') +
+
                (data.valid_to ? '<h2>Giltigt till</h2><p>' + data.valid_to.substring(0,10) + '</p>' : '<h2 style="display: none;"></h2>') +
-               (data._type !== "offers_adtraction" ? '<button id="btn-activate" class="btn btn-outline-primary style="visibility:hidden;">Till Erbjudandet</button>':'<button type="button" id="btn-activate" class="btn btn-outline-primary" data-userid="793">Till Erbjudandet</button>') +
+
+               (data._type !== "offers_adtraction" ? '<button id="btn-activate" class="btn btn-outline-primary style="visibility:hidden;">Till Erbjudandet'+
+                '</button>':'<button type="button" id="btn-activate" class="btn btn-outline-primary" data-userid="793">Till Erbjudandet</button>') +
+
             '</section>'+
           '</div>'+
           '<div class="row">'+
