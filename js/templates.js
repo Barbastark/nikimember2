@@ -218,7 +218,7 @@ function deals(value, i, categoryArr) {
             '<article id="'+value.id+'" class="card deal-card wow fadeIn" data-wow-delay="' + i + 's">'+
               '<figure class="deal-image-container">'+
               '<a href="deal.html#'+value.id+'">'+ 
-              '<img class="card-img-top img-fluid" alt="product image" src="https://www.nikimember.se/images/' + value.image_ids[0] + '"' + '/>' + 
+              '<img class="card-img-top img-fluid" alt="product image" src="img/placeholder.png" data-src="https://www.nikimember.se/images/' + value.image_ids[0] + '"' + '/>' + 
               '<div class="img-overlay"></div></a>' +
               '</figure>' +
               '<section class="clearfix deal-info">' +
