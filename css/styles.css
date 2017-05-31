@@ -40,10 +40,6 @@ body::-webkit-scrollbar {
     opacity: 1;
     transition: all 0.5s ease-in-out;  
 }
-.navbar img {
-    width: 90%;
-    height: 90%;
-}
 .nav .nav-item .nav-link, #site-nav .dropdown-item, #site-nav .dropdown-toggle {
     color: #fff;
 }
@@ -762,7 +758,7 @@ body.customer-info {
     #btn-mobile-dropdown-toggle { 
         position: fixed;
         top: 8px;
-        right: 20px;
+        right: 10px;
         color: #dedede;
         font-size: 30px;
         padding: 0;
@@ -815,6 +811,9 @@ body.customer-info {
     }
     #deal-overview a.btn:hover {
         background-color: green;
+    }
+    .deals .img-overlay {
+        display: none;
     }
     .popover {
         left: 11%!important;

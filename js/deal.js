@@ -10,8 +10,8 @@ $('[data-toggle="tooltip"]').tooltip()
 $('[data-toggle="popover"]').popover()
 		  
   if(loggedIn) {
-  	var id = data.id
-	var groups = offer.getMemberGroups(2, function(data) {
+    var id = data.id
+	  var groups = offer.getMemberGroups(2, function(data) {
 	$('#group-list').append(groupList({id: null, name: 'Välj Senare'},id))
 
   	  $.each(data, function(key, value){

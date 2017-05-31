@@ -1,7 +1,6 @@
 
 var offer = new Offer();
 
-
 //Functions for common tasks
 function latestDeals() {
   var i = 0.2;
