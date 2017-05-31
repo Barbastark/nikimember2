@@ -90,6 +90,7 @@ $( "#search" ).keyup(function() {
         $('#latest-deals-container').append(deals(value, null, categoryArr));
       });
     }
+    $("img").unveil();
   });
 });
 
