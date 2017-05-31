@@ -1,11 +1,16 @@
 /*FONT*/
 @import url('https://fonts.googleapis.com/css?family=Dosis|Open+Sans:300|Roboto');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:900');
 
 #site-nav, #site-nav .btn, #categories-filter-navigation {
     font-family: 'Alegreya Sans', sans-serif;
 }
 h1, h2, h3, h4, h5, h6, .deal-card p, span, .btn {
     font-family: 'Dosis', sans-serif;
+}
+h1{
+    color:#3E8585;
+    text-transform: uppercase;
 }
 p, .faq {
     font-family: 'Open Sans', sans-serif;
@@ -16,7 +21,7 @@ html, body {
     height:100%;
 }
 body {
-    background: url('../img/bg-red.jpg');
+    background: url('../img/bg-grey.jpg');
     background-position: center center;
     background-attachment: fixed;
     background-size: cover;
@@ -31,7 +36,7 @@ body::-webkit-scrollbar {
 
 /* SITE NAVIGATION */
 .navbar {
-    background-color: #6f3333;
+    background-color: #DD6767;
     opacity: 1;
     transition: all 0.5s ease-in-out;  
 }
@@ -40,7 +45,7 @@ body::-webkit-scrollbar {
     height: 90%;
 }
 .nav .nav-item .nav-link, #site-nav .dropdown-item, #site-nav .dropdown-toggle {
-    color: #d1d1d1;
+    color: #fff;
 }
 .nav .nav-item .nav-link:hover, #site-nav .dropdown-item:hover {
     color: #fff;
@@ -64,6 +69,12 @@ body::-webkit-scrollbar {
 #site-nav .dropdown-item:hover {
     background-color: rgba(0,0,0,0.2);
 }
+
+.carousel-inner{
+    margin-top:60px;
+    overflow:visible !important;
+}
+
 /* END SITE NAVIGATION */
 /* FOOTER */
 #footer {
@@ -116,9 +127,38 @@ body::-webkit-scrollbar {
     text-align: center;
 }
 #header .header-slide-container img {
-    margin-top: 75px;
-    width: 50%;
+    /*margin-top: 75px;*/
+    /*width: 50%;*/
     height: auto;
+}
+.carousel-item{
+    height:100% !important;
+    float: left;
+}
+.title-wrapper{
+    height:270px;
+    vertical-align: bottom;
+    text-align:right;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,000000+100&1+0,0+100 */
+background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
+
+}
+.title-wrapper h2{
+    padding-top:40px;
+    width:100%;
+    display: inline-block;
+    color:#DD6767;
+    
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+}
+.title-wrapper p{
+    font-size:22px;
+    color:#000;
+    font-family: 'Montserrat', sans-serif;
 }
 
 /* CATEGORY FILTER */
@@ -126,6 +166,7 @@ body::-webkit-scrollbar {
     padding: 0 5px;
     border-radius: 0;
     text-align: center;
+    background-color: #3E8585;
 }
 
 #categories-filter-navigation ul {
@@ -197,11 +238,11 @@ body::-webkit-scrollbar {
 }
 .filter h1 {
     font-size: 1.5em;
-    color: #d1d1d1;
+    color: #fff;
 }
 .filter a {
     padding: 0;
-    color: #d1d1d1;
+    color: #fff;
 } 
 .filter a:hover {
     color: #fff;
@@ -230,7 +271,7 @@ body::-webkit-scrollbar {
     width: 100%;
     padding: 80px 0;
 }
-.deals hr {
+.deals hr, .carousel-inner hr {
     border-top: 1px solid #be2835;
     margin: 0 auto 30px auto;
     width: 150px;
@@ -642,20 +683,71 @@ body.customer-info {
     }
       
     #header .header-slide-container img {
-        margin-top: 53px ;
+        /*margin-top: 53px ;*/
         width: 100%;
         height: auto;
     }
     #header .image-wrapper {
         padding: 0;    
     }
+
+    .title-wrapper{
+        height: auto;
+        text-align: center;
+        /*padding:0px;
+        overflow: visible;*/
+        background-color:#fff;
+    }
+
+    .title-wrapper h2{
+        overflow: visible;
+        display: block;
+        height:auto;
+        /*background-color:#DD6767;*/
+        padding:5px 0px;
+        position: relative;
+        text-align: center;
+        font-size: 40px;
+        color:#DD6767;
+        font-family: 'Dosis', sans-serif !important;
+    }
+    /*.title-wrapper h2::before{
+        position: absolute;
+        display: block;
+        content:"";
+        height:0px;
+        width:0px;
+        border: 15px solid #c92d2d;
+        border-top-width: 8px;
+        border-bottom-width: 8px;
+        border-left-color: transparent;
+        border-bottom-color: transparent;
+        top:100%;
+        left:0%;
+
+    }
+    .title-wrapper h2::after{
+        position: absolute;
+        display: block;
+        content:"";
+        height:0px;
+        width:0px;
+        border: 15px solid #c92d2d;
+        border-top-width: 8px;
+        border-bottom-width: 8px;
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+        top:100%;
+        right:0%;
+    }*/
+
     /*NAVIGATION AND CATEGORIES */
     #site-nav {
         padding: 8px 0 15px 0;
         background: url('../img/nikilogo.png');
         background-repeat: no-repeat;
         background-position: center 12px;
-        background-color: #6f3333;
+        background-color: #DD6767;
     }
     #navigation {
         margin-top: 50px;
@@ -780,15 +872,15 @@ body.customer-info {
 }
 @media(min-width:575px) {
      #header .header-slide-container img {
-        margin-top: 73px ;
+        /*margin-top: 73px ;*/
         margin-bottom: 20px;
     }
 }
 @media(min-width:768px) {
     #header .header-slide-container img {
-        margin-top: 75px;
+        /*margin-top: 75px;*/
         margin-bottom: 0;
-        width: 50%;
+        /*width: 50%;*/
         height: auto;
     }
     .card-container {

@@ -308,7 +308,12 @@ function dealDetails(data, categoryArr) {
 
 function carouselItem(className, img, data) {
   return '<div class="' + className + '">'+
-            '<div class="image-wrapper col-md-12 ">'+
+            '<div class="col-xs-12 col-md-6 title-wrapper">'+
+            '<h2>Utvalda Erbjudanden</h2>' +
+            '<hr class="text-xs-center hidden-md-up">'+
+            '<p class="hidden-sm-down">'+data.title+'</p>' +  
+            '</div>'+
+            '<div class="image-wrapper col-md-6">'+
             '<a href="deal.html#'+data.id+'">'+ 
             '<img class="card-img-top img-fluid" alt="product image" src="' + img  + '"/></a>' + 
             '</div>'+

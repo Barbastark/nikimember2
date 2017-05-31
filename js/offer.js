@@ -1,7 +1,7 @@
 class Offer {
 
     constructor(token) {
-        this._baseUri  = "https://www.nikimember.se/api_dev/v0.1";
+        this._baseUri  = "https://www.nikimember.se/api/v0.1";
         this._offerUrl = "/offers";
         this._cardsUrl = "/cards";
         this._groupsUrl = "/groups";
@@ -168,7 +168,7 @@ class Offer {
 
             },
             beforeSend: function(jqXHR){
-                var token = "ZGNhOWNmNDctMzMwMi00ZTdhLThiOTQtZGQ5NTM2ZDMwNTk2";
+                var token = "NTZjNTE2YjUtMjY5Zi00OGZmLWIxZTgtMDNmMGI1MGRjNWRl";
                 token = btoa(token+':unused');
                 jqXHR.setRequestHeader('Authorization', 'Basic '+ token);
                 jqXHR.setRequestHeader('Nikimember-App-Version', "1.1.13");
