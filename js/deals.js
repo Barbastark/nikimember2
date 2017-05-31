@@ -51,6 +51,7 @@ $(function() {
       $('.carousel-inner').append(carouselItem(className, img, value));
       i++;
     });
+    $("img").unveil();
   });
 });
 
