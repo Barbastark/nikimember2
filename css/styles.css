@@ -44,8 +44,8 @@ body {
     color: #fff;
 }
 #site-nav img {
-    width: 126px;
-    height: 29px;
+    width: 139px;
+    height: 33px;
 }
 #site-nav.sitenav-hidden {
     opacity: 0;
@@ -118,6 +118,8 @@ body {
     background-color: transparent;
     color: #fff;
     padding-bottom: 20px;
+    padding-top: 20px;
+    overflow-x: hidden;
 }
 #header .header-slide-container {
     padding: 0;
@@ -226,11 +228,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 
 }
 .filter-open {
-    padding-top: 30px;
     height: 380px;
 }
 .filter, .filter-open {
-    transition: all .5s ease-in-out;
+    transition: height .5s ease-in-out;
     background-color: rgba(62,133,133,0.8);
 }
 .filter h1 {
@@ -247,6 +248,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 }
 .category-header {
     padding: 0;
+    margin-top: 30px;
 }
 .filter input[type="text"] {
     outline: none;
@@ -269,7 +271,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
     padding: 80px 0;
 }
 .deals hr, .carousel-inner hr {
-    border-top: 1px solid #be2835;
+    border-top: 1px solid #dd6767;
     margin: 0 auto 30px auto;
     width: 150px;
 }
@@ -356,10 +358,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 }
 #deal-overview #btn-back {
     padding: 0 0 15px 15px;
-    color: green;
+    color: #DD6767;
 }
 #deal-overview #btn-back a {
-    color: green;
+    color: #DD6767;
 }
 #deal-overview #btn-back a:hover {
     text-decoration: none;
@@ -379,15 +381,15 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
     color: darkred;
 }
 #deal-overview button, .btn-to-deal {
-    border: 1px solid green;
+    border: 1px solid #DD6767;
     color: #fff;
-    background-color: green;
+    background-color: #DD6767;
     transition: all .3s ease-in-out;
     margin-top: 30px;
     outline: none;
 }
 #deal-overview button:hover, .btn-to-deal:hover {
-    background-color: darkgreen;
+    background-color: #cc3f3f;
 }
 #deal-overview .btn-to-deal {
     display: block;
@@ -514,19 +516,19 @@ body.customer-info {
     font-weight: normal;
     display: block;
     margin: 0 auto;
-    border-color: darkred;
-    color: darkred;
+    border-color: #dd6767;
+    color: #dd6767;
     transition: .3s ease-in-out;
 }
 #organization a.btn:hover {
-    background-color: darkred;
+    background-color: #dd6767;
     color: #fff;
     transition: .3s ease-in-out;
 }
 #organization .feature .fa {
     display: inline;
     width: 30%;
-    color: darkred;
+    color: #dd6767;
     padding: 0 10px 50px 0;
     font-size: 2.5em;
 }
@@ -568,7 +570,7 @@ body.customer-info {
     margin-top: 30px;
 }
 #organization ul i {
-    color: darkred;
+    color: #dd6767;
     font-size: 30px;
 
 }
@@ -677,7 +679,8 @@ body.customer-info {
       /*HEADER*/
     #header {
         padding-bottom: 0!important;
-        overflow-x: hidden;
+        padding-top: 0!important;
+        
     }
       
     #header .header-slide-container img {
@@ -688,7 +691,10 @@ body.customer-info {
     #header .image-wrapper {
         padding: 0;    
     }
-
+    #site-nav img {
+        width: 126px;
+        height: 29px;
+    }
     .title-wrapper{
         height: auto;
         text-align: center;
@@ -788,6 +794,7 @@ body.customer-info {
     }
     #category-dropdown-mobile a {
         color: #d1d1d1;
+        padding-left: 10px;
     }
     #category-dropdown-mobile-container {
         width: 100%;
@@ -860,9 +867,13 @@ body.customer-info {
     }
     #organization a.btn {
         width: 95%;
-        background-color: darkred;
+        background-color: #dd6767;
         color: #fff;
     }
+    #organization a[href*="itunes"],
+    #organization a[href*="play"] {
+        width: 100%;
+    } 
     /*------------- CONTACT.HTML ------------------*/
     #contact #form-wrapper {
         padding: 0;
@@ -886,6 +897,7 @@ body.customer-info {
     #header .header-slide-container img {
         /*margin-top: 75px;*/
         margin-bottom: 0;
+        margin-top: 0;
         /*width: 50%;*/
         height: auto;
     }
