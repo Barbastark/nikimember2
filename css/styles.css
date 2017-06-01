@@ -602,7 +602,7 @@ body.customer-info {
     padding:0;
 }
 #contact #contact-form {
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(62,133,133,0.8);
     border-radius: 3px;
     padding: 20px;
     max-width: 500px;
@@ -626,7 +626,7 @@ body.customer-info {
 }
 #contact #contact-form button:hover {
     background-color:#fff;
-    color: #6f3333;
+    color: #3e8585;
 }
 #contact ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   color: #fff;
@@ -674,9 +674,10 @@ body.customer-info {
 
 /*------------------- MOBILE ----------------------*/
 @media(max-width:767px) {
-    /*HEADER*/
+      /*HEADER*/
     #header {
         padding-bottom: 0!important;
+        overflow-x: hidden;
     }
       
     #header .header-slide-container img {
@@ -739,6 +740,10 @@ body.customer-info {
     }*/
 
     /*NAVIGATION AND CATEGORIES */
+    .navbar-toggleable-sm .navbar-nav {
+        margin-top:0;
+        margin-bottom:0;
+    }
     #site-nav {
         padding: 8px 0 15px 0;
         background: url('../img/Nikimember white.svg');

@@ -114,7 +114,6 @@ function formatPriceAndCashback(value, cashback) {
 
 function calcGrant(value, type) {
   var grant;
-
   if(value.group_cashback_percentage === 0 && value.group_cashback_decimal === 0){
     grant = 0 + 'kr';
     return grant;
@@ -137,7 +136,7 @@ function calcCashback(value, type) {
   var cashback;
   //console.log(value)
   if(value.user_cashback_percentage === 0 && value.user_cashback_decimal === 0){
-    cashback = 0;
+    cashback = false;
     return cashback;
   }
   if(type === "adtraction_program" && value.user_cashback_percentage > 0){
