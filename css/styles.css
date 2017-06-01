@@ -60,7 +60,7 @@ body {
 #site-nav #dropdown-faq {
     top: 45px;
     left: -60px;
-    background-color: #6f3333;
+    background-color: #dd6767;
 }
 
 #site-nav .dropdown-item:hover {
@@ -76,7 +76,7 @@ body {
 /* FOOTER */
 #footer {
     padding:2rem 0;
-    background-color: rgba(0,0,0,0.4);
+    background-color: rgba(62,133,133,0.8);
     color:white;
 }
 #footer a {
@@ -91,7 +91,7 @@ body {
 }
 #footer a.btn:hover {
     background-color: #fff;
-    color: darkred;
+    color: #3e8585;
     transition: all .3s ease-in-out;
 }
 #footer img {
@@ -231,7 +231,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 }
 .filter, .filter-open {
     transition: all .5s ease-in-out;
-    background-color: rgba(0,0,0,0.4);
+    background-color: rgba(62,133,133,0.8);
 }
 .filter h1 {
     font-size: 1.5em;
@@ -543,7 +543,7 @@ body.customer-info {
     width: 70%;
 }
 #parallax {
-    background-color: rgba(0,0,0,0.4)!important;
+    background-color: rgba(62,133,133,0.8)!important;
     color: #fff;
     text-align: center;
 }

@@ -94,6 +94,7 @@ function formatPriceAndCashback(value, cashback) {
 
     } else if(value.price < 0) {
         if(main !== null) {
+          //console.log(cashback)
           return '<p class="price-tag" style="visibility:hidden">Gratis</p><p class="cashback" style="color: red"><span>Rabatt:' + cashback + 'kr</p>'
         }
         if(deal !== null) {
@@ -134,9 +135,9 @@ function calcGrant(value, type) {
     
 function calcCashback(value, type) {
   var cashback;
-  
+  //console.log(value)
   if(value.user_cashback_percentage === 0 && value.user_cashback_decimal === 0){
-    cashback = false;
+    cashback = 0;
     return cashback;
   }
   if(type === "adtraction_program" && value.user_cashback_percentage > 0){

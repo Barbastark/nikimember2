@@ -13,6 +13,7 @@ function latestDeals() {
     $( data ).each(function( index, value ) {
       $('#latest-deals-container').append(deals(value, i, categoryArr));
       });
+    $("img").unveil();
   });
 }
 
@@ -77,7 +78,6 @@ $( "#search" ).keyup(function() {
       $('#latest-deals').empty()
       offer.resetQueryState()
       latestDeals();
-      //popularDeals();
     } else {
         if( text !== 'Sökresultat') {
           $('#latest-deals').empty()
@@ -123,10 +123,12 @@ $( document ).on("keyup", "#search-groups", function() {
 
 //When user clicks the start link in site navigation
 $('#home-link').on('click', function(){
+
   offer.resetQueryState()
+
   $('#latest-deals, #latest-deals-container, #popular-deals, #popular-deals-container').empty()
   latestDeals();
-  //popularDeals();
+  $("img").unveil();
 });
 
 //Popular Search Terms
@@ -145,6 +147,7 @@ $( ".popular-search" ).on('click', function() {
       $( data ).each(function( index, value ) {
         $('#latest-deals-container').append(deals(value,null,categoryArr));
       });
+       $("img").unveil();
    });
 });
 
@@ -166,6 +169,7 @@ $('.category-link, .category-search, .category-mobile-link').on('click',function
     $( data ).each(function( index, value ) {
       $('#latest-deals-container').append(deals(value, null, categoryArr));
     });
+    $("img").unveil();
   });
 });
 
