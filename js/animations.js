@@ -50,6 +50,16 @@
     }
   });
 
+  $(".category-search span").click(function() {
+      
+      var width = $('.filter span').css('width');
+      var prop = 'width';
+      
+      console.log(width)
+      $('.expand').css('width', width);
+      
+  });
+
   
  
   
